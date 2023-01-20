@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root{
+  --mainclr:#239f85;
+  --secclr:#4679b4;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  transition: .2s;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+html{
+  font-size: 62.5%;
+  overflow: hidden;
+}
+
+
+@media (max-widith:767px) {
+  html{
+    font-size: 55%;
+  }
+  .header{
+    padding: 2rem;
+  }
+}
+
+
