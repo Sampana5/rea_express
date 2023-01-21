@@ -35,24 +35,23 @@
 
     <!-- <a class="nav-link" [routerLink]="['connecter']">Mon compte</a> -->
 
-    <a class="nav-link" [routerLink]="['contact']">Nous Contactez</a>
+    <a class="nav-link" [routerLink]="['contact']">Nous Contacter</a>
 
     <a class="nav-link" [routerLink]="['faq']">FAQ</a>
 
-    <a class="nav-link" [routerLink]="['itune']">Itune(RA)</a>
+    <a class="nav-link" [routerLink]="['itune']">It</a>
 
 
   </nav>
 
  <div class="icons">
-  <i class="fa fa-bars"></i>
-  <a [routerLink]="['connecter']">Mon compte</a>
+  <div id="menubar" (click)="CallExternalJsFunction()" class="fa fa-bars"></div>
+  <a [routerLink]="['connecter']" >Compte</a>
  </div>
 
 
-
   <div class="form">
-    <form class="d-flex me-2">
+  <form class="d-flex me-2">
       <input class="form-control me-5" type="search" placeholder="Recherche rapide">
       <button class="btn btn-outline-light" type="submit">Rechercher</button>
     </form>
@@ -67,4 +66,4 @@
 
 </header> -->
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
