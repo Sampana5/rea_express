@@ -1,0 +1,63 @@
+.footer{
+  padding: 6rem 7%;
+  background: var(--mainclr);
+}
+.main-footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap
+}
+
+.inner-footer{
+  flex: 1 1 200px;
+
+}
+
+footer #drapeau{
+  width: 150px;
+}
+
+.inner-footer h2{
+  font-size: 2rem;
+  color: wheat;
+  align-items: center;
+}
+
+.inner-footer a{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: black;
+  display: block;
+  text-decoration: none;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  transition: .5s;
+
+}
+
+.inner-footer a:hover{
+
+  color: white;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

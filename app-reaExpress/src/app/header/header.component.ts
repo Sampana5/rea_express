@@ -30,6 +30,27 @@ export class HeaderComponent implements OnInit{
     Mytest();
   }
 
+  toHome(){
+    document.getElementById("home")?.scrollIntoView({behavior:"smooth"});
+  }
+
+  toAbout(){
+    document.getElementById("about")?.scrollIntoView({behavior:"smooth"});
+  }
+
+  toProducts(){
+    document.getElementById("products")?.scrollIntoView({behavior:"smooth"});
+  }
+
+  toGallery(){
+    document.getElementById("gallery")?.scrollIntoView({behavior:"smooth"});
+  }
+
+
+  toContact(){
+    document.getElementById("contact")?.scrollIntoView({behavior:"smooth"});
+  }
+
 }
 
 

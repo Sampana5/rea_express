@@ -17,13 +17,14 @@
 
 html{
   font-size: 62.5%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 
 @media (max-width:10100px) {
   html{
     font-size: 60%;
+    overflow: auto;
   }
 
 }

@@ -1,5 +1,6 @@
+
 .background-image{
-  background: url(/assets/images/background7.png);
+  background: url(/assets/images/marbre.png);
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -46,5 +47,353 @@
   background: transparent;
   border: 1px solid var(--mainclr);
   color:black;
+}
+
+.about{
+  padding: 4rem 7%;
+  background: url(/assets/images/marbre.png);
+}
+.main-about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.inner-about{
+  flex: 1 1 45em;
+}
+.inner-about .inner-about-image img{
+  width: 100%;
+
+}
+
+.about-content{
+  width: 80%;
+}
+
+.about-content h1{
+  font-size: 40px;
+  margin-bottom: 15px;
+
+}
+.about-content h5{
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+
+}
+
+.about-content a{
+  background: var(--mainclr);
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  transition: .5s;
+
+
+}
+
+.about-content a:hover{
+  background: transparent;
+  border: 1px solid var(--mainclr);
+  color:black;
+
+
+}
+
+.our-products{
+  padding: 4rem 7%;
+  background: url(/assets/images/marbre.png);
+
+}
+
+.product-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+
+}
+
+.left-product-content{
+  flex: 1 1 45rem;
+}
+
+.right-product-content{
+  flex: 1 1 45rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left-product-content h1{
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.left-product-content h5{
+  font-size: 1.5rem;
+
+}
+
+.right-product-content .right-btn a{
+  background: var(--mainclr);
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  transition: .5s;
+
+}
+
+.right-product-content .right-btn a:hover{
+  background: transparent;
+  border: 1px solid var(--mainclr);
+  color:black;
+
+}
+.main-products{
+  padding: 6rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
+}
+
+.inner-product-content{
+  flex: 1 1 300px;
+  padding: 2rem 1rem;
+  text-align: center;
+
+}
+
+.product-icon i{
+  font-size: 4rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 8rem;
+  background-color: #81D8D0;
+  color: var(--mainclr);
+  margin-bottom: 15px;
+  transition: .5s;
+}
+
+.product-icon i:hover{
+  color: white;
+  background: var(--mainclr);
+}
+
+.inner-product-content a{
+  text-decoration: none;
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: black;
+  transition: .5s;
+
+}
+
+
+
+
+
+
+.inner-product-content a:hover{
+  background:transparent;
+  color: var(--mainclr);
+}
+
+
+
+.gallery{
+  padding: 4rem 7%;
+  background: url(/assets/images/marbre.png);
+
+}
+
+.gallery h1{
+  color: var(--mainclr);
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-gallery{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+}
+
+.inner-gallery{
+  flex: 1 1 300px;
+}
+
+.inner-gallery img{
+  width: 100%;
+
+}
+
+.why-choseUs{
+  padding: 4rem 7%;
+  background: url(/assets/images/marbre.png);
+
+}
+
+.main-chose{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.inner-chose{
+  flex: 1 1 45rem;
+}
+
+.inner-chose img{
+  width: 100%;
+}
+
+.inner-chose h1{
+  font-size: 40px;
+  color: var(--mainclr);
+
+}
+
+.main-inner-chose{
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 ;
+}
+
+.chose-icon i{
+  width: 5rem;
+  height: 5rem;
+  line-height: 5rem;
+  background: white;
+  color: var(--mainclr);
+  font-size: 3rem;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.icon-content{
+  padding: 0 2rem;
+
+}
+.icon-content text{
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.contact{
+  padding: 4rem 7%;
+  background: url(/assets/images/marbre.png);
+}
+
+
+.main-contact{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.inner-contact{
+  flex: 1 1 45rem;
+}
+
+.inner-contact img{
+  width: 60%;
+}
+
+.inner-contact h1{
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: var(--mainclr);
+
+}
+
+.inner-contact h5{
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+
+}
+
+.inner-contact a{
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-decoration: none;
+  transition: .3s;
+  color: var(--mainclr);
+
+
+}
+
+.inner-contact a:hover{
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-decoration: none;
+  color: green;
+
+
+}
+
+.main-inner-contact{
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 ;
+}
+
+
+
+
+
+
+@media (max-width:1100px) {
+
+  .background-content{
+
+    width: 100%;
+    left:50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    padding-left: 5rem;
+
+  }
+
+  .inner-about .inner-about-image img{
+    margin-top: 20px;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
