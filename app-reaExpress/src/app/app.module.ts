@@ -29,6 +29,7 @@ import { TestItuneComponent } from './test-itune/test-itune.component';
 import { HomeComponent } from './home/home.component';
 import { MusicListComponent } from './music-list/music-list.component';
 import { MusicComponent } from './music/music.component';
+import { PlanAccesComponent } from './plan-acces/plan-acces.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { MusicComponent } from './music/music.component';
     TestItuneComponent,
     HomeComponent,
     MusicListComponent,
-    MusicComponent
+    MusicComponent,
+    PlanAccesComponent
   ],
   imports: [
     BrowserModule,

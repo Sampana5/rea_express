@@ -10,6 +10,7 @@ import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { MusicListComponent } from './music-list/music-list.component';
 import { MusicComponent } from './music/music.component';
+import { PlanAccesComponent } from './plan-acces/plan-acces.component';
 import { PlanSiteComponent } from './plan-site/plan-site.component';
 import { ProduitsComponent } from './produits/produits.component';
 import { PromotionComponent } from './promotion/promotion.component';
@@ -20,7 +21,10 @@ import { VoirPanierComponent } from './voir-panier/voir-panier.component';
 const routes: Routes = [
   {path:'home', component: HomeComponent},
   {path:'catalogue', component: CatalogueComponent},
-  {path:'comment-commander', component: CommentComanderComponent},
+  {path:'comment-commander', component: CommentComanderComponent, children:[
+    {path:'condition-vente', component: ConditionVenteComponent},
+    {path: 'plan-acces', component: PlanAccesComponent},
+  ]},
   {path:'condition-vente', component: ConditionVenteComponent},
   {path:'connecter', component: ConnecterComponent},
   {path:'contact', component: ContactComponent},
@@ -33,6 +37,9 @@ const routes: Routes = [
   {path:'voir-panier', component: VoirPanierComponent},
   {path:'itune', component: TestItuneComponent},
   {path: 'music/:musicId', component: MusicComponent},
+  // {path: 'comment-commander/plan-acces', component: PlanAccesComponent},
+  // {path: 'comment-commander/condition-vente', component: ConditionVenteComponent},
+  {path: 'plan-acces', component: PlanAccesComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
