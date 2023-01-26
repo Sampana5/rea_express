@@ -41,6 +41,9 @@ export class HomeComponent implements OnInit{
     Smooth();
   }
 
+  toRead(){
+    document.getElementById("read")?.scrollIntoView({behavior:"smooth"});
+  }
 
 
 }

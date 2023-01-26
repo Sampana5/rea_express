@@ -1,0 +1,28 @@
+.read{
+  padding: 4rem 7%;
+  background: url(/assets/images/marbre.png);
+}
+
+.main-read{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.inner-read{
+  flex: 1 1 40rem;
+
+}
+
+
+.read-content h1{
+  font-size: 40px;
+  top: 30%;
+  color: var(--mainclr);
+}
+
+.read-content h2{
+  margin-bottom: 30px;
+}

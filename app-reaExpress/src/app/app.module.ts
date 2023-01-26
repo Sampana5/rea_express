@@ -30,6 +30,7 @@ import { HomeComponent } from './home/home.component';
 import { MusicListComponent } from './music-list/music-list.component';
 import { MusicComponent } from './music/music.component';
 import { PlanAccesComponent } from './plan-acces/plan-acces.component';
+import { ReadMoreComponent } from './read-more/read-more.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { PlanAccesComponent } from './plan-acces/plan-acces.component';
     HomeComponent,
     MusicListComponent,
     MusicComponent,
-    PlanAccesComponent
+    PlanAccesComponent,
+    ReadMoreComponent
   ],
   imports: [
     BrowserModule,

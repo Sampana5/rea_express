@@ -10,9 +10,9 @@
   padding: 0;
   outline: none;
   box-sizing: border-box;
-  transition: .2s;
-  text-transform: capitalize;
-  text-decoration: none;
+  /* text-transform: capitalize;
+  text-decoration: none; */
+  font-family: sans-serif;
 }
 
 html{
