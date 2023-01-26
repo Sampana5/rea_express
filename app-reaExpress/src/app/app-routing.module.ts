@@ -22,8 +22,8 @@ const routes: Routes = [
   {path:'home', component: HomeComponent},
   {path:'catalogue', component: CatalogueComponent},
   {path:'comment-commander', component: CommentComanderComponent, children:[
-    {path:'condition-vente', component: ConditionVenteComponent},
-    {path: 'plan-acces', component: PlanAccesComponent},
+    // {path:'condition-vente', component: ConditionVenteComponent},
+    // {path: 'plan-acces', component: PlanAccesComponent},
   ]},
   {path:'condition-vente', component: ConditionVenteComponent},
   {path:'connecter', component: ConnecterComponent},

@@ -51,6 +51,10 @@ export class HeaderComponent implements OnInit{
     document.getElementById("contact")?.scrollIntoView({behavior:"smooth"});
   }
 
+  toBgrd(){
+    document.getElementById("bgrd")?.scrollIntoView({behavior:"smooth"});
+  }
+
 }
 
 

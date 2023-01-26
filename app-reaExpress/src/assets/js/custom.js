@@ -13,6 +13,21 @@ function Mytest(){
 
 
 
+function Smooth(){
+  const bg = document.querySelector('#bgrd');
+  window.addEventListener('scroll', function(){
+    bg.style.backgroundSize = 50 - + window.pageXOffset + '%';
+  })
+
+}
+
+$(window).scroll(function(){
+  var scroll = $(window).scrollTop();
+  $('bgrd-image').css({
+    width: (50 + scroll/5) + '%'
+  })
+})
+
 //  let menubar = document.querySelector('#menubar');
 //   let mynav = document.querySelector('.navbar');
 
