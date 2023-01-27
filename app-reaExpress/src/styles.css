@@ -13,18 +13,21 @@
   /* text-transform: capitalize;
   text-decoration: none; */
   font-family: sans-serif;
+   scroll-behavior: smooth;
 }
 
 html{
-  font-size: 62.5%;
-  overflow: auto;
+  /* font-size: 62.5%; */
+  /* overflow: auto; */
   scroll-behavior: smooth;
+  scroll-padding-top: 22rem;
 }
 
 
 @media (max-width:10100px) {
   html{
     font-size: 60%;
+    scroll-behavior: smooth;
     overflow: auto;
   }
 

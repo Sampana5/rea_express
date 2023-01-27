@@ -1,6 +1,6 @@
 
 .background-image{
-  background: url(/assets/images/BG2.PNG);
+  background: url(/assets/images/BGG.PNG);
   width: 100%;
   height: 100vh;
   /* background-size: cover; */
@@ -15,16 +15,54 @@ section{
 }
 
 .ensemble{
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  scroll-snap-type: mandatory;
+  overflow: hidden;
 }
 
 .bgrd-image{
-   background: url(/assets/images/bgrd3.PNG);
+  background: url(/assets/images/bgrd3.PNG);
   width: 100%;
   height: 100vh;
-  background-size: 50%;
+  background-size: 40%;
   background-attachment: fixed;
+  z-index: -1;
+}
+
+.bgrdPosition{
+  background: rgba(100, 100, 100, 0.5);
+  width: 100%;
+  height: 100vh;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  padding-top: 6%;
+  position: relative;
+  opacity: 0;
+
+}
+
+.bg{
+  opacity: 1!important;
+  transition: .5s all ease;
+  animation-duration: 3s;
+  animation-name: underground;
+}
+
+@keyframes underground {
+  0% {opacity: 0.1!important;}
+  10% {opacity: 0.2!important;}
+  20% {opacity: 0.3!important;}
+  30% {opacity: 0.4!important;}
+  40% {opacity: 0.4!important;}
+  50% {opacity: 0.6!important;}
+  60% {opacity: 0.7!important;}
+  70% {opacity: 0.8!important;}
+  80% {opacity: 0.9!important;}
+  90% {opacity: 0.99!important;}
+  /* 100% {opacity: 1!important;} */
+
+
+
+
 }
 
 .bgrd-image2{
@@ -81,16 +119,15 @@ section{
 }
 
 .about{
-  padding: 7rem 7%;
+  padding: 4rem 7%;
   background: url(/assets/images/marbre.png);
   width: 100%;
-  height: 90vh;
 }
 .main-about{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 35px;
   flex-wrap: wrap;
 }
 
@@ -103,7 +140,7 @@ section{
 }
 
 .about-content{
-  width: 80%;
+  width: 100%;
 }
 
 .about-content h1{
@@ -248,6 +285,7 @@ section{
   padding: 4rem 7%;
   background: url(/assets/images/marbre.png);
 
+
 }
 
 .gallery h1{
@@ -272,13 +310,13 @@ section{
 }
 
 .inner-gallery img{
-  width: 70%;
+  width: 50%;
   transition:transform .5s;
 
 }
 
 .inner-gallery:hover img{
-  width: 70%;
+  width: 50%;
   transform:scale(1.1);
 
 }
@@ -287,7 +325,6 @@ section{
   padding: 4rem 7%;
   background: url(/assets/images/marbre.png);
   width: 100%;
-  height: 80vh;
 
 }
 
@@ -343,7 +380,6 @@ section{
   padding: 4rem 7%;
   background: url(/assets/images/marbre.png);
   width: 100%;
-  height: 80vh;
 }
 
 
@@ -411,7 +447,7 @@ section{
   .background-content{
 
     width: 100%;
-    left:50%;
+    left: 50%;
     top: 40%;
     transform: translate(-50%, -50%);
     padding-left: 5rem;
@@ -419,8 +455,41 @@ section{
   }
 
   .inner-about .inner-about-image img{
-    margin-top: 20px;
+     margin-top: 20px;
+    width: 60%;
+  }
 
+  /* .main-gallery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+  } */
+
+  /* .inner-gallery{
+    flex: 1 1 1 260px;
+  } */
+
+  .inner-gallery img{
+    width: 60%;
+    transition:transform .5s;
+
+  }
+
+  .inner-gallery:hover img{
+    width: 60%;
+    transform:scale(1.1);
+
+  }
+
+  .inner-chose img{
+    width: 80%;
+  }
+
+  .inner-contact img{
+    width: 50%;
   }
 
 

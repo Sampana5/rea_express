@@ -13,7 +13,7 @@ declare function Smooth(): void;
 export class HomeComponent implements OnInit{
 
   myscriptElement: HTMLScriptElement | undefined;
-  bg : any;
+  //bg : any;
   ngOnInit(): void {
     //window.addEventListener('scroll', SmoothExternalJS());
    // this.SmoothExternalJS();
@@ -32,10 +32,19 @@ export class HomeComponent implements OnInit{
     this.myscriptElement.src = "src/assets/js/custom.js";
   }
 
-  @HostListener("document:scroll")
-  Scrollfunction(){
+  bgVariable:boolean = false;
 
+  @HostListener('document:scroll')
+  onScroll(){
+    if(document.body.scrollTop > 100 || document.documentElement.scrollTop > 100){
+      this.bgVariable = true;
+    }else{
+      this.bgVariable  = false;
+    }
   }
+
+
+
 
   SmoothExternalJS(){
     Smooth();

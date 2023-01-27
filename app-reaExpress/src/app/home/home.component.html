@@ -13,7 +13,8 @@
 
 </script> -->
 <br> <br> <br> <br>
-<div id="bgrd" class="bgrd-image" data-aos="zoom-in" data-aos-duration="1000" >
+<div id="bgrd" class="bgrd-image">
+  <div class="bgrdPosition" [class.bg]="bgVariable"></div>
 </div>
 
 
@@ -21,7 +22,7 @@
 
 <div class="ensemble">
 
-  <section id="home" data-aos="fade-down" data-aos-duration="1000">
+  <section id="home" data-aos="fade-down" data-aos-duration="1500">
     <div class="background-image" >
       <div class="background-content">
         <h1> BIENVENUE </h1>
@@ -34,9 +35,9 @@
   </div>
 
   <section id="about">
-    <div class="about" data-aos="fade-down">
+    <div class="about" >
       <div class="main-about">
-        <div class="inner-about">
+        <div class="inner-about" data-aos="fade-up" data-aos-duration="1000">
             <div class="about-content">
               <h1 style="color: var(--mainclr);"> A propos de Nous </h1> <br> <br> <br> <br> <br> <br> <br> <br>
               <h5> REA-EXPRESS, est une société crée en 2002 à Ouagadougou au BURKINA FASO. <br>
@@ -47,7 +48,7 @@
             </div>
 
           </div>
-        <div class="inner-about">
+        <div class="inner-about" data-aos="fade-down" data-aos-duration="1000">
           <div class="inner-about-image">
              <img src="/assets/images/automatehmatologie.jpg" alt="">
           </div>
@@ -59,11 +60,11 @@
   <div id="bgrd" (created)="SmoothExternalJS()" class="bgrd-image2">
   </div>
 
-  <section id="products">
+  <section id="products" data-aos="zoom-in" data-aos-duration="1000">
     <div class="our-products">
       <div class="product-content">
         <div class="left-product-content">
-          <h1 style="color: var(--mainclr);"> Le catalogue </h1> <br> <br> <br> <br>
+          <h1 style="color: var(--mainclr);"> Le catalogue </h1> <br>
           <h5>Bonjour,
             Nous vous proposons une gamme de produits très variés. <br>
             Utilisez le menu de gauche pour accéder aux produits d'un groupe donnée. <br>
@@ -119,10 +120,22 @@
   <div id="bgrd" (created)="SmoothExternalJS()" class="bgrd-image2">
   </div>
 
-  <section id="gallery">
+  <section id="gallery" data-aos="zoom-out" data-aos-duration="1000">
     <div class="gallery">
       <h1> Galerie</h1>
       <div class="main-gallery">
+
+        <div class="a">
+
+        </div>
+
+        <div class="b">
+
+        </div>
+
+        <div class="c">
+
+        </div>
         <div class="inner-gallery">
           <img src="/assets/images/laboratoire/lab8.PNG" alt="">
         </div>
@@ -159,6 +172,10 @@
           <img src="/assets/images/Pcr/pcrR1.PNG" alt="">
         </div>
 
+        <div class="inner-gallery">
+          <!-- <img src="/assets/images/Pcr/pcrR1.PNG" alt=""> -->
+        </div>
+
       </div>
     </div>
   </section>
@@ -167,16 +184,16 @@
   </div>
 
 
-  <section id="why-choseUs">
+  <section id="why-choseUs" >
 
     <div class="why-choseUs">
 
       <div class="main-chose">
-        <div class="inner-chose">
+        <div class="inner-chose" data-aos="fade-right" data-aos-duration="1000">
           <img src="/assets/images/choix1.jpg" alt="">
         </div>
 
-        <div class="inner-chose">
+        <div class="inner-chose" data-aos="fade-left" data-aos-duration="1000">
           <h1 style="color: var(--mainclr);">Pourquoi nous choisir</h1>
 
           <div class="inner-chose-content">
@@ -238,11 +255,10 @@
 
     </div>
 
-    <div id="bgrd" (created)="SmoothExternalJS()" class="bgrd-image2">
-    </div>
-
-
   </section>
+
+  <div id="bgrd" (created)="SmoothExternalJS()" class="bgrd-image2">
+  </div>
 
   <section id="contact">
 
@@ -250,11 +266,11 @@
 
       <div class="main-contact">
 
-        <div class="inner-contact">
+        <div class="inner-contact" data-aos="fade-right" data-aos-duration="1000">
           <img src="/assets/images/contact1.jpg" alt="">
         </div>
 
-        <div class="inner-contact">
+        <div class="inner-contact" data-aos="fade-left" data-aos-duration="1000">
           <div class="contact-content">
             <h1> Contactez-nous</h1> <br> <br> <br> <br>
             <div class="text">
@@ -280,6 +296,9 @@
 
 
   </section>
+
+  <div id="bgrd" (created)="SmoothExternalJS()" class="bgrd-image2">
+  </div>
 
 </div>
 
