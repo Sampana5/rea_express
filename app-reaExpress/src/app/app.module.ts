@@ -7,6 +7,14 @@ import { AppConfigModule } from './app-config/app-config.module';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {MatIconModule} from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +39,10 @@ import { MusicListComponent } from './music-list/music-list.component';
 import { MusicComponent } from './music/music.component';
 import { PlanAccesComponent } from './plan-acces/plan-acces.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
+import { LoginComponent } from './login/login.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 @NgModule({
@@ -56,7 +68,9 @@ import { ReadMoreComponent } from './read-more/read-more.component';
     MusicListComponent,
     MusicComponent,
     PlanAccesComponent,
-    ReadMoreComponent
+    ReadMoreComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +80,13 @@ import { ReadMoreComponent } from './read-more/read-more.component';
     AppConfigModule,
     CommonModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [
     ItuneService

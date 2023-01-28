@@ -18,6 +18,8 @@ import { TemoignagesComponent } from './temoignages/temoignages.component';
 import { TestItuneComponent } from './test-itune/test-itune.component';
 import { VoirPanierComponent } from './voir-panier/voir-panier.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {path:'home', component: HomeComponent},
@@ -42,6 +44,8 @@ const routes: Routes = [
   // {path: 'comment-commander/condition-vente', component: ConditionVenteComponent},
   {path: 'plan-acces', component: PlanAccesComponent},
   {path: 'read-more', component: ReadMoreComponent},
+  {path: 'login', component: LoginComponent},
+  {path:'signup', component: SignupComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
