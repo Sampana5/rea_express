@@ -1,4 +1,4 @@
-<br><br><br><br><br>
+<br><br>
 <!-- <section id="login">
   <div class="container">
     <div class="row">
@@ -26,34 +26,35 @@
     </div>
   </div>
 </section> -->
-
-
-
-
-
 <section id="login">
   <div class="login">
     <div class="main-login">
       <div class="inner-login">
           <div class="login-content">
-            <br> <br> <br>
-            <h1> Connectez-vous</h1> <br>
-            <h3>Veuillez entrer votre E-mail ainsi que votre Mot de Passe</h3>
 
-            <div class="card">
-              <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Adresse E-mail</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
+            <div class="first" data-aos="fade-left" data-aos-duration="1000">
+              <h1> Connectez-vous</h1><br>
+              <h3>Veuillez entrer votre Identifiant ainsi que votre Mot de Passe</h3>
+            </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+            <div class="second" data-aos="fade-right" data-aos-duration="1000">
+              <div class="card">
+
+                <form>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> <h2>Identifiant ou Adresse E-mail</h2></label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text"> <h5>Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</h5></div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label"> <h2>Mot de Passe</h2></label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <button type="submit" class="btn btn-success"> <h2>Valider</h2></button>
+                </form>
+                <br><br>
+                <a [routerLink]="['/signup']"> <h3>Nouvel Utilisateur ? Inscrivez-vous</h3></a>
+              </div>
             </div>
 
           </div>

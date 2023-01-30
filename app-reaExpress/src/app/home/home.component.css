@@ -437,6 +437,51 @@ section{
   margin: 1rem 0 ;
 }
 
+.inner-contact .card{
+  margin-top: 10px;
+  border: none;
+  width: 600px;
+  padding: 40px;
+  position: relative;
+  /* left: 50%;
+  top: 50%; */
+
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+.inner-contact .card button{
+  color: white;
+  background: var(--mainclr);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+
+.inner-contact .card button:hover{
+  background:transparent;
+  border: 1px solid var(--mainclr);
+}
+
+.inner-contact .card input{
+  font-size: 1.8rem;
+}
+
+.inner-contact .card textarea{
+  font-size: 1.8rem;
+  width: 400px ;
+}
+
+.inner-contact .card textarea{
+  font-size: 1.8rem;
+  width: 400px ;
+}
+
+.inner-contact .card .file{
+  width: 300px;
+}
 
 
 
@@ -455,7 +500,7 @@ section{
   }
 
   .inner-about .inner-about-image img{
-     margin-top: 20px;
+    margin-top: 20px;
     width: 60%;
   }
 
@@ -496,19 +541,32 @@ section{
 
 
 
+}
 
+@media (max-width:800px) {
+  .inner-contact .card{
+    margin-top: 10px;
+    border: none;
+    width: 300px;
+    padding: 40px;
+    position: relative;
+    /* left: 50%;
+    top: 50%; */
 
+    background-color: rgba(100, 100, 100, 0.5);
+  }
 
+  .inner-contact .card textarea{
+    font-size: 1.8rem;
+    width: 200px ;
+  }
 
-
-
-
-
-
-
-
-
+  .inner-contact .card .file{
+    width: 150px;
+  }
 
 
 }
+
+
 

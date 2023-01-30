@@ -19,7 +19,7 @@
 
 .login-content h1{
   font-size: 40px;
-  top: 30%;
+  top: 40%;
   color: var(--mainclr);
 }
 
@@ -37,6 +37,64 @@
   /* left: 50%;
   top: 50%; */
 
+  background-color: rgba(100, 100, 100, 0.5);
+
 
 }
 
+.card button{
+  color: white;
+  background: var(--mainclr);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+
+section{
+  scroll-snap-align: start;
+}
+
+.card button:hover{
+  background:transparent;
+  border: 1px solid var(--mainclr);
+}
+
+.card a{
+text-decoration: none;
+color: var(--mainclr);
+transition: .4s;
+}
+
+.card a:hover{
+  color: green;
+}
+
+.card input{
+  font-size: 1.8rem;
+}
+
+
+
+
+
+
+@media (max-width:630px) {
+
+  .card{
+    margin-top: 10px;
+    border: none;
+    width: 400px;
+    padding: 40px;
+    position: relative;
+    /* left: 50%;
+    top: 50%; */
+
+    background-color: rgba(100, 100, 100, 0.5);
+
+
+  }
+
+}

@@ -1,1 +1,157 @@
-<p>signup works!</p>
+<br><br><br>
+<!-- <section id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="text-center">
+            <h1>Connectez-vous</h1>
+            <h5>Veuillez entrer votre E-mail ainsi que votre Mot de Passe</h5>
+          </div>
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Adresse E-mail</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Mot de Passe</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <div class="mb-3">
+  <label for="nomClient" class="form-label"> <h2>Nom Client : <span style="color: red;">*</span> </h2></label>
+  <input type="text" class="form-control" id="nomClient" onchange="j$(this).removeClass('Champ Invalide')" required>
+</div> -->
+
+<section id="signup">
+  <div class="signup">
+    <div class="main-signup">
+      <div class="inner-signup">
+          <div class="signup-content">
+
+            <div class="first" data-aos="fade-left" data-aos-duration="1000">
+              <h1>Inscrivez-vous</h1><br>
+              <h3>Veuillez entrer les informations requises</h3>
+            </div>
+
+            <div class="second" data-aos="fade-right" data-aos-duration="1000">
+              <div class="card">
+
+                <form>
+                  <div class="mb-3">
+                    <label for="idNomClient" class="form-label"> <h2>Nom Client : <span style="color: red;">*</span> </h2></label>
+                    <input type="text" class="form-control" name="nomClient" id="idNomClient" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idAdresse1" class="form-label"> <h2>Adresse 1 : <span style="color: red;">*</span> </h2></label>
+                    <input type="text" class="form-control" name="adresse1" id="idAdresse1" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idAdresse2" class="form-label"> <h2>Adresse 2 : </h2></label>
+                    <input type="text" class="form-control" name="adresse2" id="idAdresse2">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idAdresse3" class="form-label"> <h2>Adresse 3 : </h2></label>
+                    <input type="text" class="form-control" name="adresse3" id="idAdresse3">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idBoitePostale" class="form-label"> <h2>Boite Postale : </h2></label>
+                    <input type="text" class="form-control" name="boitePostal" id="idBoitePostale">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idTel" class="form-label"> <h2>Téléphone : <span style="color: red;">*</span> </h2></label>
+                    <input type="number" class="form-control" name="tel" id="idTel">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idFax" class="form-label"> <h2>Fax : </h2></label>
+                    <input type="text" class="form-control" name="fax" id="idFax">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idVille" class="form-label"> <h2>Ville : <span style="color: red;">*</span> </h2></label>
+                    <input type="text" class="form-control" name="ville" id="idVille">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idPays" class="form-label"> <h2>Pays : <span style="color: red;">*</span> </h2></label>
+                    <h2>
+                      <select name="idpays"  id="idpays">
+                      <option value="0" selected='selected'>Séléctionnez votre pays</option><option value="17" >Afrique Du Sud</option><option value="13" >Algérie</option><option value="16" >Allemagne</option><option value="18" >Angola</option><option value="65" >Argentine</option><option value="73" >Belgique</option><option value="15" >Bénin</option><option value="19" >Botswana</option><option value="2" >Burkina Faso</option><option value="20" >Burundi</option><option value="21" >Cabinda</option><option value="22" >Cameroun</option><option value="55" >Cap Vert</option><option value="23" >Centrafrique</option><option value="60" >Chine</option><option value="24" >Congo</option><option value="70" >Coree</option><option value="4" >Côte D'ivoire</option><option value="25" >Djibouti</option><option value="26" >égypte</option><option value="74" >Emirats Arabes</option><option value="27" >Erythrée</option><option value="8" >Espagne</option><option value="66" >Etats-unis</option><option value="28" >éthiopie</option><option value="63" >Finlande</option><option value="6" >France</option><option value="76" >G.d Luxembourg</option><option value="29" >Gabon</option><option value="56" >Gambie</option><option value="1" >Ghana</option><option value="30" >Guinée</option><option value="31" >Guinée Bissau</option><option value="32" >Guinée équatoriale</option><option value="75" >Hongrie</option><option value="57" >Ile Maurice</option><option value="61" >Inde</option><option value="67" >Israel</option><option value="71" >Israel</option><option value="62" >Italie</option><option value="33" >Kenya</option><option value="34" >Lesotho</option><option value="54" >Libéria</option><option value="14" >Lybie</option><option value="35" >Madagascar</option><option value="36" >Malawi</option><option value="3" >Mali</option><option value="11" >Maroc</option><option value="37" >Mauritanie</option><option value="38" >Mozambique</option><option value="39" >Namibie</option><option value="10" >Niger</option><option value="40" >Nigéria</option><option value="41" >Ouganda</option><option value="69" >Pakistan</option><option value="68" >Pays(nompays) Bas</option><option value="59" >Portugal</option><option value="78" >Republique De Coree</option><option value="42" >République Démocratique Du Congo</option><option value="72" >Royaume Uni</option><option value="43" >Rwanda</option><option value="44" >Sahara</option><option value="9" >Sénégal</option><option value="58" >Seychelles</option><option value="45" >Sierra Léone</option><option value="77" >Slovaquie</option><option value="46" >Somalie</option><option value="47" >Soudan Du Nord</option><option value="48" >Soudan Du Sud</option><option value="79" >Suede</option><option value="7" >Suisse</option><option value="49" >Swaziland</option><option value="64" >Taiwan</option><option value="50" >Tanzanie</option><option value="51" >Tchad</option><option value="5" >Togo</option><option value="12" >Tunisie</option><option value="52" >Zambie</option><option value="53" >Zimbabwe</option></select>
+                    </h2>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idTypeClient" class="form-label"> <h2>Type de Client : <span style="color: red;">*</span></h2></label>
+                    <h2>
+                      <select  name="typeClient" id="idTypeClient" >
+                        <option value="1" >Société</option>
+                        <option value="2" >Particulier</option>
+                      </select>
+                    </h2>
+
+
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idNomSociete" class="form-label"> <h2>Nom de la Société : </h2></label>
+                    <input type="text" class="form-control" name="nomSociete" id="idNomSociete">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idDevise" class="form-label"> <h2>Devise : </h2></label>
+                    <h2>
+                      <select  name="devise" id="idDevise"  ><option value="1" > FCFA</option><option value="2" >EUR</option><option value="3" >USD</option></select>
+                    </h2>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="idObservation" class="form-label"> <h2>Observation : </h2></label>
+                    <textarea rows="10" class="form-control" name="observation" id="idObservation"></textarea>
+                  </div>
+
+                  <section class="identifiants">
+                    <div class="mb-3">
+                      <label for="idIdentifiant" class="form-label"> <h2>Identifiant : <span style="color: red;">*</span></h2></label>
+                      <input type="email" class="form-control" id="idIdentifiant" name="identifiant" required>
+                      <div id="emailHelp" class="form-text"> <h5>Nous ne partagerons jamais vos Informations avec quelqu'un d'autre.</h5></div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="idPass" class="form-label"> <h2>Mot de Passe : <span style="color: red;">*</span></h2></label>
+                      <input type="password" class="form-control" name="pass" id="idPass" required>
+                    </div>
+                  </section>
+
+                  <button type="submit" class="btn btn-success"> <h2>S'inscrire</h2></button>
+
+                </form>
+                <br><br>
+                <a [routerLink]="['/login']"><h3>Vous possédez déjà un Compte ? Connectez-vous</h3></a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
