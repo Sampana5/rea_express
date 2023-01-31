@@ -97,6 +97,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "app-reaExpress:build:production",
+            "firebaseProject": "rea-express",
+            "firebaseHostingSite": "rea-express"
+          }
         }
       }
     }

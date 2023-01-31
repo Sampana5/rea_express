@@ -1,7 +1,7 @@
 
 
 header{
-  padding: 2rem 7%;
+  padding: 0.8rem 7%;
   background-color: var(--mainclr);
   display: flex;
   justify-content: space-between;
@@ -13,11 +13,11 @@ header{
 }
 
 .preHeader{
-  padding: 2rem 7%;
+  padding: 0.8rem 7%;
   background-color: var(--mainclr);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:center;
   position: fixed;
   left: 0;
   right: 0;
@@ -61,10 +61,17 @@ header #logo{
 
 }
 
+.d-flex button{
+  height: 30px;
+  transition: .4s;
+}
+
 .d-flex button:hover{
   background-color: var(--secclr);
-  transition: .2s;
+
 }
+
+
 form{
   width: 500px;
 }
@@ -94,6 +101,22 @@ form{
 .navbar.active{
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   transition: .2s;
+}
+
+
+.header .dash a{
+  color: white;
+  background: red;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.header .dash a:hover{
+  background:transparent;
+  border: 1px solid red;
 }
 
 

@@ -1,22 +1,30 @@
 .footer{
-  padding: 4rem 7%;
+  padding: 0.8rem 7%;
   background: var(--mainclr);
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0; */
+  /* z-index: 1000; */
 }
+
 .main-footer{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap
 }
 
 .inner-footer{
-  flex: 1 1 200px;
+  flex: 1 1 110px;
 
 }
 
 footer #drapeau{
-  width: 150px;
+  width: 100px;
 }
 
 .inner-footer h2{
@@ -61,6 +69,24 @@ footer #drapeau{
     flex: 1 1 110px;
 
   }
+}
+
+@media (max-width:800px) {
+
+  /* .main-footer{
+
+  display:inline-flex;
+  justify-content: center;
+  align-items:center;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  } */
+  footer #drapeau{
+    width: 100px;
+  }
+
+
 }
 
 

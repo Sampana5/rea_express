@@ -1,41 +1,26 @@
-.conVent{
+.dashbord{
   padding: 4rem 7%;
   background: url(/assets/images/marbre.png);
   width: 100%;
   height: 100vh;
 }
 
-.main-conVent{
+.main-dashbord{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
-.inner-conVent{
+.inner-dashbord{
   flex: 1 1 40rem;
 
 }
 
-
-.conVent-content h1{
+.dashbord-content h1{
   font-size: 40px;
-  top: 30%;
+  top: 40%;
   color: var(--mainclr);
+  padding-left: 30%;
 }
-
-.conVent-content h3{
-  font-size: 1.5rem;
-  margin-bottom: 30px;
-}
-
-
-
-
-
-
-
-
-
-

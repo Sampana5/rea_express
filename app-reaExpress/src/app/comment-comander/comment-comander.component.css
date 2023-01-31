@@ -1,6 +1,8 @@
 .comCom{
   padding: 4rem 7%;
   background: url(/assets/images/marbre.png);
+  width: 100%;
+  height: 100vh;
 }
 
 .main-comCom{

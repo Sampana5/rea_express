@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { ItuneService } from './test-itune/itune-service';
 import { AppConfigModule } from './app-config/app-config.module';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -14,6 +13,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 
 
+//angularFire imports
+import {AngularFireModule} from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+
+//environnet import
+import { environment } from 'src/environments/environment';
+
+//service import
+import { ItuneService } from './test-itune/itune-service';
+import { ReaExpressService } from './shared/rea-express.service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +51,11 @@ import { ReadMoreComponent } from './read-more/read-more.component';
 import { LoginComponent } from './login/login.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SignupComponent } from './signup/signup.component';
+import { MailSendComponent } from './mail-send/mail-send.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
+
+
+
 
 
 
@@ -70,7 +84,9 @@ import { SignupComponent } from './signup/signup.component';
     PlanAccesComponent,
     ReadMoreComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MailSendComponent,
+    DashbordComponent
   ],
   imports: [
     BrowserModule,
@@ -87,11 +103,20 @@ import { SignupComponent } from './signup/signup.component';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
+
+
   ],
   providers: [
-    ItuneService
+    ItuneService,
+    ReaExpressService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }

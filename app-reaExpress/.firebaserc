@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "rea-express": {
+      "hosting": {
+        "app-reaExpress": [
+          "rea-express"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "rea-express"
+  }
+}

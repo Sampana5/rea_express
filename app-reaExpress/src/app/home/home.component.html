@@ -258,56 +258,7 @@
         <div class="inner-contact" data-aos="fade-right" data-aos-duration="1000">
 
 
-          <!-- <img src="/assets/images/contact1.jpg" alt=""> -->
-
-          <div class="card">
-
-            <form>
-              <div class="mb-3">
-                <label for="idNomClient" class="form-label"> <h2>Votre Nom : <span style="color: red;">*</span> </h2></label>
-                <input type="text" class="form-control" name="nomClient" id="idNomClient" value required>
-              </div>
-
-              <div class="mb-3">
-                <label for="idMail" class="form-label"> <h2> E-mail : <span style="color: red;">*</span></h2></label>
-                <input type="email" class="form-control" id="idMail" name="mail" required>
-                <div id="emailHelp" class="form-text"> <h5>Nous ne partagerons jamais vos Informations avec quelqu'un d'autre.</h5></div>
-              </div>
-
-
-              <div class="mb-3">
-                <label for="idObjetcontact"> <h2>Votre demande concerne :</h2></label>
-
-                <h2>
-                  <select id="idObjetcontact" name="objetcontact">
-                    <option value="1">Question avant achat</option>
-                    <option value="2">Livraison et paiement</option>
-                    <option value="3">SAV</option>
-                    <option value="4">Partenariat</option>
-                  </select>
-                </h2>
-
-
-              </div>
-
-              <div class="mb-3">
-                <label for="idSujet" class="form-label"> <h2>Sujet : <span style="color: red;">*</span> </h2></label>
-                <input type="text" class="form-control" name="sujet" id="idSujet" value required>
-              </div>
-
-
-              <div class="mb-3">
-                <label for="idMessage" class="form-label"> <h2>Message: <span style="color: red;">*</span> </h2></label> <br>
-
-                <textarea rows="10" name="message" id="idMessage"></textarea>
-              </div>
-
-              <input type="file" id="idFile" name="file" value> <br> <br> <br>
-              <button type="submit" class="btn btn-success"> <h2>Envoie</h2></button>
-
-            </form>
-          </div>
-
+          <img src="/assets/images/contact1.jpg" alt="">
 
         </div>
 
@@ -315,7 +266,7 @@
           <div class="contact-content">
             <h1> Contactez-nous</h1> <br> <br> <br> <br>
             <div class="text">
-              <h5> Vous souhaitez obtenir plus d'informations sur notre entreprise, <br> ou avez une demande particulière à nous formuler : <br> Merci de nous envoyer un email ou passer nous rendre visite </h5> <br> <br>
+              <h5> Vous souhaitez obtenir plus d'informations sur notre entreprise, <br> ou avez une demande particulière à nous formuler : <br> <a [routerLink]="['/mail-send']"> Merci de nous envoyer un email</a> ou passer nous rendre visite </h5> <br> <br>
 
               <h3>
                 REA-EXPRESS <br>

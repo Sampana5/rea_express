@@ -20,6 +20,8 @@ import { VoirPanierComponent } from './voir-panier/voir-panier.component';
 import { ReadMoreComponent } from './read-more/read-more.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { MailSendComponent } from './mail-send/mail-send.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
 
 const routes: Routes = [
   {path:'home', component: HomeComponent},
@@ -39,6 +41,7 @@ const routes: Routes = [
   {path:'temoignages', component: TemoignagesComponent},
   {path:'voir-panier', component: VoirPanierComponent},
   {path:'itune', component: TestItuneComponent},
+  {path: 'music-list', component: MusicListComponent},
   {path: 'music/:musicId', component: MusicComponent},
   // {path: 'comment-commander/plan-acces', component: PlanAccesComponent},
   // {path: 'comment-commander/condition-vente', component: ConditionVenteComponent},
@@ -46,6 +49,8 @@ const routes: Routes = [
   {path: 'read-more', component: ReadMoreComponent},
   {path: 'login', component: LoginComponent},
   {path:'signup', component: SignupComponent},
+  {path: 'mail-send', component: MailSendComponent},
+  {path: 'dashbord', component: DashbordComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
