@@ -1,301 +1,264 @@
-
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-</script>
-<script type="text/javascript">
- $(window).scroll(function(){
-  var scroll = $(window).scrollTop();
-  $('bgrd-image').css({
-    width: (50 + scroll/5) + '%'
-  })
-})
-
-</script> -->
-<br> <br> <br> <br>
-<div id="bgrd" class="bgrd-image">
-  <div class="bgrdPosition" [class.bg]="bgVariable"></div>
-</div>
-
-
-
-
-<div class="ensemble">
-
-  <section id="home" data-aos="fade-down" data-aos-duration="1500">
-    <div class="background-image" >
-      <div class="background-content">
-        <h1> BIENVENUE </h1>
-        <h2> <i>Ici Nous Possédons une grande sélection d'équipements médicaux de qualité<br> pour répondre à tous vos besoins.</i> </h2>
+<section id="home" class="hero">
+  <div class="rea-container hero-inner">
+    <div class="hero-copy">
+      <p class="hero-kicker">Laboratoire médical · Ouagadougou · depuis 2002</p>
+      <h1>REA Express</h1>
+      <p class="hero-title">Réactifs & équipements biomédicaux pour le Burkina Faso</p>
+      <p class="hero-sub">
+        Conseil technique, gamme complète et service après-vente pour laboratoires,
+        hôpitaux et centres de santé.
+      </p>
+      <div class="hero-cta">
+        <a class="rea-btn rea-btn-primary" routerLink="/catalogue">Découvrir le catalogue</a>
+        <a class="rea-btn rea-btn-ghost" routerLink="/mail-send">Demander un devis</a>
+      </div>
+      <div class="hero-trust">
+        <div><strong>2002</strong><span>Année de création</span></div>
+        <div><strong>SAV</strong><span>Suivi & maintenance</span></div>
+        <div><strong>24/7</strong><span>Infoline conseil*</span></div>
       </div>
     </div>
-  </section>
+    <div class="hero-panel">
+      <img src="/assets/images/automatehmatologie.jpg" alt="Équipement médical REA Express">
+      <div class="hero-badge">
+        <strong>+226 25 33 39 91</strong>
+        <span>Service client · 8h – 18h30</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div id="bgrd" class="bgrd-image2">
+<section class="trust-strip">
+  <div class="rea-container trust-grid">
+    <article>
+      <i class="fa-solid fa-flask"></i>
+      <div>
+        <h3>Laboratoire & technologie</h3>
+        <p>Réactifs, analyseurs et consommables de qualité.</p>
+      </div>
+    </article>
+    <article>
+      <i class="fa-solid fa-headset"></i>
+      <div>
+        <h3>Conseil & SAV</h3>
+        <p>Une équipe disponible pour vos projets santé.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="feature-strip">
+  <div class="rea-container feature-grid">
+    <article class="feature-product">
+      <div class="feature-product-media">
+        <img src="/assets/images/automatehmatologie.jpg" alt="Automate d'hématologie">
+      </div>
+      <div class="feature-product-body">
+        <span class="rea-kicker">Produit mis en avant</span>
+        <h2>Automate d'hématologie</h2>
+        <ul>
+          <li>Haute technologie pour analyses sanguines</li>
+          <li>22 paramètres à partir de 2 gouttes de sang</li>
+          <li>Fiable pour laboratoires et cliniques</li>
+        </ul>
+        <a class="rea-btn rea-btn-secondary" routerLink="/catalogue">Explorer le catalogue</a>
+      </div>
+    </article>
+
+    <aside class="feature-contact">
+      <div class="feature-contact-head">Contactez-nous</div>
+      <div class="feature-contact-photo">
+        <img src="assets/images/contact3.jpg" alt="Service client REA Express">
+      </div>
+      <div class="feature-contact-body">
+        <p class="hours">Ouvert de <strong>8h</strong> à <strong>18h30</strong></p>
+        <a class="phone" href="tel:+22625333991">+226 25 33 39 91</a>
+        <p class="hint">Infoline & conseils produits</p>
+        <a class="rea-btn rea-btn-primary" routerLink="/mail-send">Envoyer un message</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="about" class="rea-section about">
+  <div class="rea-container about-grid">
+    <div class="about-copy">
+      <span class="rea-kicker">À propos</span>
+      <h2 class="rea-title">Partenaire biomédical depuis 2002</h2>
+      <p class="rea-lead">
+        REA Express contribue à l'approvisionnement en réactifs, consommables et équipements
+        médicaux au Burkina Faso et dans la sous-région.
+      </p>
+      <a class="rea-btn rea-btn-primary" routerLink="/read-more">En savoir plus</a>
+    </div>
+    <div class="about-visual">
+      <img src="/assets/images/choix1.jpg" alt="Équipe et équipements REA Express">
+    </div>
+  </div>
+</section>
+
+<section id="products" class="rea-section products">
+  <div class="rea-container">
+    <div class="products-intro">
+      <div>
+        <span class="rea-kicker">Services & catalogue</span>
+        <h2 class="rea-title">Une gamme pour vos besoins</h2>
+        <p class="rea-lead">Choisissez une catégorie pour commencer.</p>
+      </div>
+      <a class="rea-btn rea-btn-ghost" routerLink="/catalogue">Tous les produits</a>
+    </div>
+
+    <div class="category-grid">
+      <a class="category-tile" routerLink="/catalogue">
+        <i class="fa-solid fa-flask"></i>
+        <h3>Laboratoire</h3>
+        <p>Réactifs, hématologie, biochimie…</p>
+      </a>
+      <a class="category-tile" routerLink="/catalogue">
+        <i class="fa-solid fa-kit-medical"></i>
+        <h3>Médecine</h3>
+        <p>Consommables & équipements</p>
+      </a>
+      <a class="category-tile" routerLink="/catalogue">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Banque de sang</h3>
+        <p>Transfusion & groupage</p>
+      </a>
+      <a class="category-tile" routerLink="/catalogue">
+        <i class="fa-solid fa-dna"></i>
+        <h3>PCR</h3>
+        <p>Biologie moléculaire</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="quick-links">
+  <div class="rea-container quick-grid">
+    <div class="quick-item">
+      <h3>Témoignages</h3>
+      <p>Ce que disent nos partenaires santé.</p>
+      <a routerLink="/temoignages">Voir les avis →</a>
+    </div>
+    <div class="quick-item">
+      <h3>Besoin d'information&nbsp;?</h3>
+      <p>Infoline <a href="tel:+22625333991">+226 25 33 39 91</a></p>
+      <a routerLink="/faq">Consulter la FAQ →</a>
+    </div>
+    <div class="quick-item accent">
+      <h3>Espace client</h3>
+      <p>Créez votre compte en quelques minutes.</p>
+      <div class="quick-actions">
+        <a class="rea-btn rea-btn-ghost" routerLink="/signup">S'inscrire</a>
+        <a class="rea-btn rea-btn-ghost" routerLink="/login">Connexion</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="rea-section gallery">
+  <div class="rea-container">
+    <div class="gallery-head">
+      <div>
+        <span class="rea-kicker">Galerie</span>
+        <h2 class="rea-title">Équipements en images</h2>
+        <p class="gallery-lead">Une sélection de notre matériel laboratoire, sang et PCR.</p>
+      </div>
+      <div class="gallery-controls">
+        <button type="button" class="gal-btn" (click)="scrollGallery(-1)" aria-label="Précédent">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button type="button" class="gal-btn" (click)="scrollGallery(1)" aria-label="Suivant">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
   </div>
 
-  <section id="about">
-    <div class="about" >
-      <div class="main-about">
-        <div class="inner-about" data-aos="fade-up" data-aos-duration="1000">
-            <div class="about-content">
-              <h1 style="color: var(--mainclr);"> A propos de Nous </h1> <br> <br> <br> <br> <br> <br> <br> <br>
-              <h5> REA-EXPRESS, est une société crée en 2002 à Ouagadougou au BURKINA FASO. <br>
-              Notre but est de contribuer au développement dans l'approvisionnement en réactifs, <br>
-              consommables et équipements médicaux et biomédicaux au Burkina Faso et dans la sous-région.
-              </h5>
-              <a (click)="toRead()" [routerLink]="['/read-more']" routerLinkActive="active"> Lire plus</a>
-            </div>
+  <div class="gallery-track-wrap">
+    <div class="gallery-track" #galleryTrack>
+      <figure *ngFor="let img of galleryImages">
+        <div class="gal-media">
+          <img [src]="img.src" [alt]="img.alt">
+          <div class="gal-overlay"><span>{{ img.alt }}</span></div>
+        </div>
+        <figcaption>{{ img.alt }}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-          </div>
-        <div class="inner-about" data-aos="fade-down" data-aos-duration="1000">
-          <div class="inner-about-image">
-             <img src="/assets/images/automatehmatologie.jpg" alt="">
-          </div>
+<section id="why-choseUs" class="rea-section why">
+  <div class="rea-container why-grid">
+    <div class="why-visual">
+      <img src="/assets/images/choix1.jpg" alt="Pourquoi choisir REA Express">
+    </div>
+    <div class="why-copy">
+      <span class="rea-kicker">Nos atouts</span>
+      <h2 class="rea-title">Pourquoi nous choisir</h2>
+
+      <div class="why-item">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div>
+          <h3>Vision</h3>
+          <p>Améliorer la qualité des soins de santé.</p>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div>
+          <h3>Mission</h3>
+          <p>Réactifs et équipements au meilleur ratio qualité-coût, avec un SAV efficace.</p>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        </div>
+        <div>
+          <h3>Valeurs</h3>
+          <p>Innovation, qualité, professionnalisme et satisfaction client.</p>
         </div>
       </div>
     </div>
-
-  </section>
-  <div id="bgrd"  class="bgrd-image2">
   </div>
+</section>
 
-  <section id="products" data-aos="zoom-in" data-aos-duration="1000">
-    <div class="our-products">
-      <div class="product-content">
-        <div class="left-product-content">
-          <h1 style="color: var(--mainclr);"> Le catalogue </h1> <br>
-          <h5>Bonjour,
-            Nous vous proposons une gamme de produits très variés. <br>
-            Utilisez le menu de gauche pour accéder aux produits d'un groupe donnée. <br>
-            Vous pouvez aussi utiliser la zone de recherche rapide et zone de recherche avancée, <br>
-            pour retrouver vos produits.
-            <br><br>
-            Cordialement,<br>
-            L'Equipe REA-EXPRESS
-          </h5> <br> <br> <br> <br> <br>
-        </div>
-        <div class="right-product-content">
-          <div class="right-btn">
-            <a href=""> Voir tous les produits</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="main-products">
-        <div class="inner-product-content">
-          <div class="product-icon">
-            <i class="fa fa-ambulance"></i> <br>
-            <a href="">Laboratoire</a>
-          </div>
-        </div>
-
-        <div class="inner-product-content">
-          <div class="product-icon">
-            <i class="fa fa-medkit"></i> <br>
-            <a href="">Medecine</a>
-          </div>
-        </div>
-
-        <div class="inner-product-content">
-          <div class="product-icon">
-            <i class="fa fa-heartbeat"></i> <br>
-            <a href="">Banque de Sang</a>
-          </div>
-        </div>
-
-        <div class="inner-product-content">
-          <div class="product-icon">
-            <i class="fas fa-user-md"></i> <br>
-            <a href="">PCR</a>
-          </div>
-        </div>
-
-
-      </div>
-
+<section id="contact" class="rea-section contact">
+  <div class="rea-container contact-grid">
+    <div class="contact-visual">
+      <img src="assets/images/contact3.jpg" alt="Équipe contact REA Express">
     </div>
-  </section>
-
-  <div id="bgrd"  class="bgrd-image2">
-  </div>
-
-  <section id="gallery">
-    <div class="gallery">
-      <h1> Galerie</h1>
-      <div class="main-gallery">
-
-        <div class="inner-gallery" data-aos="fade-left" data-aos-duration="1000">
-          <img src="/assets/images/laboratoire/lab8.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-left" data-aos-duration="1000">
-          <img src="/assets/images/Imagerie/imm1.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-left" data-aos-duration="1000">
-          <img src="/assets/images/laboratoire/lab13.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-right" data-aos-duration="1000">
-          <img src="/assets/images/Sang/sang8.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-right" data-aos-duration="1000">
-          <img src="/assets/images/laboratoire/lab6.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-right" data-aos-duration="1000">
-          <img src="/assets/images/Sang/sang14.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-left" data-aos-duration="1000">
-          <img src="/assets/images/Pcr/pcrD1.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-left" data-aos-duration="1000">
-          <img src="/assets/images/Pcr/pcrE3.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery" data-aos="fade-left" data-aos-duration="1000">
-          <img src="/assets/images/Pcr/pcrR1.PNG" alt="">
-        </div>
-
-        <div class="inner-gallery">
-          <!-- <img src="/assets/images/Pcr/pcrR1.PNG" alt=""> -->
-        </div>
-
+    <div class="contact-copy">
+      <span class="rea-kicker">Nous joindre</span>
+      <h2 class="rea-title">Contactez-nous dès maintenant</h2>
+      <p class="rea-lead">
+        Une question avant achat, un devis ou un SAV&nbsp;?
+        <a routerLink="/mail-send">Écrivez-nous</a>.
+      </p>
+      <div class="contact-cards">
+        <a class="contact-chip" href="tel:+22625333991">
+          <i class="fa-solid fa-phone"></i>
+          <span>+226 25 33 39 91</span>
+        </a>
+        <a class="contact-chip" href="mailto:rea_express@rea-express.com">
+          <i class="fa-solid fa-envelope"></i>
+          <span>rea_express@rea-express.com</span>
+        </a>
       </div>
+      <address>
+        <strong>REA Express</strong><br>
+        BP 647 CMS Ouagadougou 11<br>
+        Horaires : Lun – Sam · 8h – 18h30
+      </address>
     </div>
-  </section>
-
-  <div id="bgrd"  class="bgrd-image2">
   </div>
+</section>
 
-
-  <section id="why-choseUs" >
-
-    <div class="why-choseUs">
-
-      <div class="main-chose">
-        <div class="inner-chose" data-aos="fade-right" data-aos-duration="1000">
-          <img src="/assets/images/choix1.jpg" alt="">
-        </div>
-
-        <div class="inner-chose" data-aos="fade-left" data-aos-duration="1000">
-          <h1 style="color: var(--mainclr);">Pourquoi nous choisir</h1>
-
-          <div class="inner-chose-content">
-            <div class="main-inner-chose">
-              <div class="chose-icon">
-                <i class="fas fa-user-md"></i>
-              </div>
-              <div class="icon-content">
-                <div class="text">
-                  <h3>notre vision</h3>
-                  <h5>Œuvrer à l'amélioration de la qualité des soins de santé.</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="inner-chose-content">
-            <div class="main-inner-chose">
-              <div class="chose-icon">
-                <i class="fas fa-user-md"></i>
-              </div>
-              <div class="icon-content">
-                <div class="texte">
-                  <h3>notre Mission</h3>
-                  <h5>Mettre à la disposition du système de santé, <br>
-                    des réactifs et des équipements de meilleur ratio qualité-coût <br>
-                    tout en sécurisant les investissements <br>
-                    par un service après-vente efficace.</h5>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="inner-chose-content">
-            <div class="main-inner-chose">
-              <div class="chose-icon">
-                <i class="fas fa-user-md"></i>
-              </div>
-              <div class="icon-content">
-                <div class="texte">
-                  <h3>Nos Valeurs</h3>
-                  <h5>
-                    <ul>
-                      <li>L'innovation est l'arme que nous avons choisie pour devancer nos concurrents.</li>
-                      <li>La qualité et le prix de nos produits constituent nos principaux atouts.</li>
-                      <li>Le professionnalisme de notre personnel fait notre différence.</li>
-                      <li>La satisfaction de notre clientèle est la raison pour laquelle nous nous <br>évertuons chaque instant.</li>
-                    </ul>
-                  </h5>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <div id="bgrd"  class="bgrd-image2">
-  </div>
-
-  <section id="contact">
-
-    <div class="contact">
-
-      <div class="main-contact">
-
-        <div class="inner-contact" data-aos="fade-right" data-aos-duration="1000">
-
-
-          <img src="/assets/images/contact1.jpg" alt="">
-
-        </div>
-
-        <div class="inner-contact" data-aos="fade-left" data-aos-duration="1000">
-          <div class="contact-content">
-            <h1> Contactez-nous</h1> <br> <br> <br> <br>
-            <div class="text">
-              <h5> Vous souhaitez obtenir plus d'informations sur notre entreprise, <br> ou avez une demande particulière à nous formuler : <br> <a [routerLink]="['/mail-send']"> Merci de nous envoyer un email</a> ou passer nous rendre visite </h5> <br> <br>
-
-              <h3>
-                REA-EXPRESS <br>
-                BP 647 CMS Ouagadougou 11 <br>
-                TEL +226 25 33 39 91 <br>
-                FAX +226 25 33 39 22 <br>
-                GSM +226 25 33 39 91 <br>
-                E-mail rea_express@rea-express.com <br>
-              </h3>
-            </div>
-
-          </div>
-        </div>
-
-
-
-      </div>
-
-    </div>
-
-
-  </section>
-
-  <div id="bgrd"  class="bgrd-image2">
-  </div>
-
-</div>
-
-
-
-
-
+<p class="fine-print rea-container">* Disponibilité selon les créneaux d'ouverture du service client.</p>

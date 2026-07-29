@@ -1,52 +1,94 @@
-<div class="preHeader">
-  <div class="content">
-
-
-
-
-      <div class="form">
-      <form class="d-flex me-2">
-          <input class="form-control me-5" type="search" placeholder="Recherche rapide" style="font-size: 1.5rem;" >
-          <button class="btn btn-outline-light" type="submit"> <h5>Rechercher</h5></button>
-        </form>
-      </div>
-
-
-
+<div class="site-chrome">
+  <div class="utility-bar">
+    <div class="rea-container utility-inner">
+      <span class="utility-item">
+        <i class="fas fa-clock"></i>
+        Lun – Sam · 8h – 18h30
+      </span>
+      <a class="utility-item" href="tel:+22625333991">
+        <i class="fas fa-phone-alt"></i>
+        +226 25 33 39 91
+      </a>
+      <a class="utility-item hide-sm" routerLink="/mail-send" (click)="closeMenu()">
+        <i class="fas fa-envelope"></i>
+        Nous joindre
+      </a>
+    </div>
   </div>
 
+  <header class="site-header" [class.is-scrolled]="scrolled" [class.menu-open]="menuOpen">
+    <div class="rea-container header-row">
+      <a routerLink="/home" class="brand" (click)="closeMenu()" aria-label="REA Express — Accueil">
+        <img src="assets/images/Logo.jpg" alt="REA Express" class="brand-logo">
+      </a>
 
+      <nav class="desktop-nav">
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
+        <div class="nav-drop">
+          <a routerLink="/catalogue" routerLinkActive="active">Services & produits</a>
+          <div class="nav-drop-panel">
+            <a routerLink="/catalogue">Catalogue laboratoire</a>
+            <a routerLink="/produits">Tous les produits</a>
+            <a routerLink="/promotion">Promotions</a>
+            <a routerLink="/comment-commander">Comment commander</a>
+          </div>
+        </div>
+        <a routerLink="/read-more" routerLinkActive="active">À propos</a>
+        <a routerLink="/faq" routerLinkActive="active">FAQ</a>
+        <a routerLink="/mail-send" routerLinkActive="active">Nous joindre</a>
+      </nav>
+
+      <div class="top-actions">
+        <button type="button" class="icon-btn ghost" (click)="toggleSearch()" aria-label="Recherche">
+          <i class="fas fa-search"></i>
+        </button>
+        <a routerLink="/voir-panier" class="icon-btn ghost" title="Panier" (click)="closeMenu()">
+          <i class="fas fa-shopping-bag"></i>
+        </a>
+        <a *ngIf="!currentUser" routerLink="/login" class="icon-btn account" (click)="closeMenu()">
+          Connexion
+        </a>
+        <a *ngIf="currentUser" [routerLink]="isAdmin ? '/dashbord' : '/espace-client'" class="icon-btn account" (click)="closeMenu()">
+          {{ currentUser.name }}
+        </a>
+        <button *ngIf="currentUser" type="button" class="icon-btn ghost" (click)="logout()" title="Déconnexion">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+        <button type="button" class="menu-toggle" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-drawer" [class.open]="searchOpen">
+      <div class="rea-container">
+        <form class="search" (submit)="$event.preventDefault()">
+          <i class="fas fa-search"></i>
+          <input type="search" placeholder="Rechercher un produit, une catégorie…" [(ngModel)]="searchQuery" name="q">
+          <button type="button" class="close-search" (click)="toggleSearch()" aria-label="Fermer">×</button>
+        </form>
+      </div>
+    </div>
+  </header>
 </div>
-<br> <br> <br>
-<header class="header">
-  <img src="assets/images/Logo.jpg" id="logo" alt="">
-  <nav class="navbar">
-    <a (click)="toBgrd()" [routerLink]="['home']" routerLinkActive="active">Acceuil</a>
-    <!-- <a class="nav-link" [routerLink]="['catalogue']">Catalogues</a> -->
-    <a (click)="toAbout()" routerLinkActive="active">A propos de Nous</a>
-    <a (click)="toProducts()" routerLinkActive="active">Nos Produits</a>
-    <!-- <a class="nav-link" [routerLink]="['connecter']">Mon compte</a> -->
-    <a (click)="toGallery()" routerLinkActive="active">Galerie</a>
-    <a (click)="toContact()" routerLinkActive="active">Nous Contacter</a>
-    <a [routerLink]="['itune']" routerLinkActive="active">It</a>
+
+<div class="mobile-overlay" [class.open]="menuOpen" (click)="closeMenu()"></div>
+<aside class="mobile-drawer" [class.open]="menuOpen">
+  <div class="drawer-head">
+    <strong>Menu</strong>
+    <button type="button" (click)="closeMenu()" aria-label="Fermer">×</button>
+  </div>
+  <nav>
+    <a routerLink="/home" (click)="closeMenu()">Accueil</a>
+    <a routerLink="/catalogue" (click)="closeMenu()">Catalogue</a>
+    <a routerLink="/produits" (click)="closeMenu()">Tous les produits</a>
+    <a routerLink="/promotion" (click)="closeMenu()">Promotions</a>
+    <a routerLink="/read-more" (click)="closeMenu()">À propos</a>
+    <a routerLink="/faq" (click)="closeMenu()">FAQ</a>
+    <a routerLink="/temoignages" (click)="closeMenu()">Témoignages</a>
+    <a routerLink="/mail-send" (click)="closeMenu()">Nous joindre</a>
+    <a routerLink="/login" (click)="closeMenu()">Connexion</a>
   </nav>
+</aside>
 
-  <div class="icons">
-  <div id="menubar" (click)="CallExternalJsFunction()" class="fa fa-bars"></div>
-  <a [routerLink]="['/login']" >Compte</a>
- </div>
-
- <div class="dash">
-  <a [routerLink]="['/dashbord']" >Dashbord</a>
- </div>
-
-<!--
-  <div class="form">
-  <form class="d-flex me-2">
-      <input class="form-control me-5" type="search" placeholder="Recherche rapide">
-      <button class="btn btn-outline-light" type="submit">Rechercher</button>
-    </form>
-  </div> -->
-
-</header>
-
+<div class="header-spacer"></div>

@@ -1,102 +1,118 @@
-.login{
-  padding: 10rem 7%;
-  background: url(/assets/images/marbre.png);
-  width: 100%;
-  height: 100vh;
+.auth-page {
+  min-height: calc(100vh - 160px);
+  padding: 3.5rem 0 4rem;
+  background:
+    linear-gradient(180deg, rgba(238, 246, 244, 0.92), rgba(244, 248, 250, 0.95)),
+    url(/assets/images/marbre.png);
 }
 
-.main-login{
-  display: flex;
-  justify-content: center;
+.auth-wrap {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2.5rem;
   align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
 }
 
-.inner-login{
-  flex: 1 1 40rem;
-
+.auth-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: rea-fade-up 0.55s ease both;
 }
 
-
-.login-content h1{
-  font-size: 40px;
-  top: 40%;
-  color: var(--mainclr);
+.auth-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: rea-fade-up 0.55s ease 0.1s both;
 }
 
-.login-content h3{
-  font-size: 1.5rem;
-  margin-bottom: 30px;
+.auth-panel-head {
+  background: linear-gradient(90deg, var(--mainclr), var(--secclr));
+  color: #fff;
+  font-weight: 750;
+  padding: 0.9rem 1.2rem;
+  letter-spacing: 0.03em;
 }
 
-.card{
-  margin-top: 10px;
-  border: none;
-  width: 500px;
-  padding: 40px;
-  position: relative;
-  /* left: 50%;
-  top: 50%; */
-
-  background-color: rgba(100, 100, 100, 0.5);
-
-
+.auth-form {
+  padding: 1.35rem 1.3rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
-.card button{
-  color: white;
-  background: var(--mainclr);
+.auth-form label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 0.35rem;
+}
+
+.auth-form input {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 0.95rem;
+  background: var(--surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form input:focus {
+  border-color: var(--mainclr);
+  box-shadow: 0 0 0 3px rgba(31, 143, 120, 0.15);
+  background: #fff;
+}
+
+.auth-submit {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+.auth-links {
+  padding: 0.4rem 1.3rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.auth-links a {
+  color: var(--secclr);
+  font-size: 0.92rem;
+  font-weight: 650;
   text-decoration: none;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  border-radius: 10px;
-  transition: .2s;
 }
 
-
-section{
-  scroll-snap-align: start;
+.auth-links a:hover {
+  color: var(--mainclr);
+  text-decoration: underline;
 }
 
-.card button:hover{
-  background:transparent;
-  border: 1px solid var(--mainclr);
+.auth-error {
+  color: #b42318;
+  background: #fde8e8;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 650;
+  margin-top: 0.5rem;
 }
 
-.card a{
-text-decoration: none;
-color: var(--mainclr);
-transition: .4s;
+.auth-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
-.card a:hover{
-  color: green;
-}
-
-.card input{
-  font-size: 1.8rem;
-}
-
-
-
-
-
-
-@media (max-width:630px) {
-
-  .card{
-    margin-top: 10px;
-    border: none;
-    width: 400px;
-    padding: 40px;
-    position: relative;
-    /* left: 50%;
-    top: 50%; */
-
-    background-color: rgba(100, 100, 100, 0.5);
-
-
+@media (max-width: 860px) {
+  .auth-wrap {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
+  .auth-panel {
+    max-width: 460px;
+  }
 }

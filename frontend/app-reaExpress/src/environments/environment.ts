@@ -9,15 +9,16 @@ export const environment = {
     messagingSenderId: '623521202081',
     measurementId: 'G-QFMRVXR3KC',
   },
-  production:false,
+  production: false,
+  apiUrl: 'http://localhost:8080',
   apiEndpoint: 'https://itunes.apple.com/',
-  firebaseConfig : {
-    apiKey: "AIzaSyDPNqRofCuSpORL1FY4ZkjgmLuR2dMo4fw",
-    authDomain: "rea-express.firebaseapp.com",
-    projectId: "rea-express",
-    storageBucket: "rea-express.appspot.com",
-    messagingSenderId: "623521202081",
-    appId: "1:623521202081:web:148e95a51b2c5fe5c4d5e0",
-    measurementId: "G-QFMRVXR3KC"
+  firebaseConfig: {
+    apiKey: 'AIzaSyDPNqRofCuSpORL1FY4ZkjgmLuR2dMo4fw',
+    authDomain: 'rea-express.firebaseapp.com',
+    projectId: 'rea-express',
+    storageBucket: 'rea-express.appspot.com',
+    messagingSenderId: '623521202081',
+    appId: '1:623521202081:web:148e95a51b2c5fe5c4d5e0',
+    measurementId: 'G-QFMRVXR3KC'
   }
 };

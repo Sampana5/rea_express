@@ -1,6 +1,6 @@
 package com.rea.express.POJO;
 
-public enum Role_ {
-    USER,
-    ADMIN
+public enum ERole {
+    ROLE_USER,
+    ROLE_ADMIN
 }

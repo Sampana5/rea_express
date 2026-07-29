@@ -22,36 +22,33 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { MailSendComponent } from './mail-send/mail-send.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { AuthGuard } from './shared/auth.guard';
+import { AdminGuard } from './shared/admin.guard';
 
 const routes: Routes = [
-  {path:'home', component: HomeComponent},
-  {path:'catalogue', component: CatalogueComponent},
-  {path:'comment-commander', component: CommentComanderComponent, children:[
-    // {path:'condition-vente', component: ConditionVenteComponent},
-    // {path: 'plan-acces', component: PlanAccesComponent},
-  ]},
-  {path:'condition-vente', component: ConditionVenteComponent},
-  {path:'connecter', component: ConnecterComponent},
-  {path:'contact', component: ContactComponent},
-  {path:'espace-client', component: EspaceClientComponent},
-  {path:'faq', component: FaqComponent},
-  {path:'plan-site', component: PlanSiteComponent},
-  {path:'produits', component: ProduitsComponent},
-  {path:'promotion', component: PromotionComponent},
-  {path:'temoignages', component: TemoignagesComponent},
-  {path:'voir-panier', component: VoirPanierComponent},
-  {path:'itune', component: TestItuneComponent},
-  {path: 'music-list', component: MusicListComponent},
-  {path: 'music/:musicId', component: MusicComponent},
-  // {path: 'comment-commander/plan-acces', component: PlanAccesComponent},
-  // {path: 'comment-commander/condition-vente', component: ConditionVenteComponent},
-  {path: 'plan-acces', component: PlanAccesComponent},
-  {path: 'read-more', component: ReadMoreComponent},
-  {path: 'login', component: LoginComponent},
-  {path:'signup', component: SignupComponent},
-  {path: 'mail-send', component: MailSendComponent},
-  {path: 'dashbord', component: DashbordComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
+  { path: 'home', component: HomeComponent },
+  { path: 'catalogue', component: CatalogueComponent },
+  { path: 'comment-commander', component: CommentComanderComponent },
+  { path: 'condition-vente', component: ConditionVenteComponent },
+  { path: 'connecter', component: ConnecterComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'espace-client', component: EspaceClientComponent, canActivate: [AuthGuard] },
+  { path: 'faq', component: FaqComponent },
+  { path: 'plan-site', component: PlanSiteComponent },
+  { path: 'produits', component: ProduitsComponent },
+  { path: 'promotion', component: PromotionComponent },
+  { path: 'temoignages', component: TemoignagesComponent },
+  { path: 'voir-panier', component: VoirPanierComponent },
+  { path: 'itune', component: TestItuneComponent },
+  { path: 'music-list', component: MusicListComponent },
+  { path: 'music/:musicId', component: MusicComponent },
+  { path: 'plan-acces', component: PlanAccesComponent },
+  { path: 'read-more', component: ReadMoreComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'mail-send', component: MailSendComponent },
+  { path: 'dashbord', component: DashbordComponent, canActivate: [AdminGuard] },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

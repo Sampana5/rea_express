@@ -1,29 +1,47 @@
+<footer class="site-footer">
+  <div class="rea-container footer-grid">
+    <div class="footer-brand">
+      <img src="/assets/images/Logo.jpg" alt="REA Express" class="footer-logo">
+      <p>
+        Laboratoire & équipements biomédicaux<br>
+        Ouagadougou, Burkina Faso
+      </p>
+      <a href="tel:+22625333991" class="footer-phone">+226 25 33 39 91</a>
+      <p class="footer-hours">Lun – Sam · 8h – 18h30</p>
+    </div>
 
-<footer class="footer">
-      <div class="main-footer">
-        <div class="inner-footer">
-          <img src="/assets/images/armsBF.png" id="drapeau" alt="">
-        </div>
+    <div class="footer-col">
+      <h3>Navigation rapide</h3>
+      <a routerLink="/catalogue">Catalogue</a>
+      <a routerLink="/promotion">Promotions</a>
+      <a routerLink="/comment-commander">Comment commander</a>
+      <a routerLink="/faq">FAQ</a>
+    </div>
 
+    <div class="footer-col">
+      <h3>À propos</h3>
+      <a routerLink="/read-more">Qui sommes-nous</a>
+      <a routerLink="/temoignages">Témoignages</a>
+      <a routerLink="/plan-acces">Plan d'accès</a>
+      <a routerLink="/mail-send">Nous joindre</a>
+    </div>
 
+    <div class="footer-col">
+      <h3>Compte</h3>
+      <a routerLink="/login">Connexion</a>
+      <a routerLink="/signup">Inscription</a>
+      <a routerLink="/espace-client">Espace client</a>
+      <a routerLink="/voir-panier">Panier</a>
+    </div>
+  </div>
 
-        <div class="inner-footer">
-          <h2>Site</h2>
-          <a [routerLink]="['condition-vente']" routerLinkActive="active">Condition De Vente</a>
-          <a [routerLink]="['faq']" routerLinkActive="active">Foire aux Questions</a>
-        </div>
-
-        <!-- <div class="inner-footer">
-
-        </div> -->
-
-        <div class="inner-footer">
-          <h2>Client</h2>
-          <a [routerLink]="['promotion']" routerLinkActive="active">Promotion</a>
-          <a [routerLink]="['comment-commander']" routerLinkActive="active">Comment commander</a>
-          <a [routerLink]="['connecter']" routerLinkActive="active">Se connecter</a>
-        </div>
-
+  <div class="footer-bottom">
+    <div class="rea-container footer-bottom-inner">
+      <span>© 2026 REA Express — Réalisé par <strong>YEwata Services</strong>.</span>
+      <div class="footer-legal">
+        <a routerLink="/condition-vente">Conditions de vente</a>
+        <a routerLink="/plan-site">Plan du site</a>
       </div>
-
+    </div>
+  </div>
 </footer>

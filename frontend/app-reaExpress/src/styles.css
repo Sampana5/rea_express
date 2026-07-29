@@ -1,36 +1,229 @@
-/* You can add global styles to this file, and also import other style files */
+/* REA Express — design system (évolution du site actuel) */
 
-:root{
-  --mainclr:#239f85;
-  --secclr:#4679b4;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap');
+
+:root {
+  /* Palette héritée du site (vert médical + bleu) */
+  --mainclr: #1f8f78;
+  --mainclr-dark: #176b5a;
+  --mainclr-light: #e8f6f2;
+  --secclr: #3d6fa8;
+  --secclr-dark: #2f5682;
+  --accent: #e6b422;
+  --accent-soft: #fff6d6;
+
+  --ink: #142028;
+  --ink-muted: #5a6b76;
+  --surface: #f4f8fa;
+  --surface-2: #ffffff;
+  --line: rgba(20, 32, 40, 0.1);
+  --shadow: 0 12px 40px rgba(20, 32, 40, 0.08);
+  --shadow-sm: 0 4px 16px rgba(20, 32, 40, 0.06);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --header-h: 72px;
+  --maxw: 1180px;
+
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Syne', 'Manrope', sans-serif;
 }
 
-*{
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   outline: none;
   box-sizing: border-box;
-  /* text-transform: capitalize;
-  text-decoration: none; */
-  font-family: sans-serif;
-   scroll-behavior: smooth;
 }
 
-html{
-  /* font-size: 62.5%; */
-  /* overflow: auto; */
+html {
   scroll-behavior: smooth;
-  scroll-padding-top: 22rem;
+  scroll-padding-top: 120px;
 }
 
+/* Scrollbar style clinique (esprit Medfuture) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #1f8f78 #e8f0f3;
+}
 
-@media (max-width:10100px) {
-  html{
-    font-size: 60%;
-    scroll-behavior: smooth;
-    overflow: auto;
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #e8f0f3;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1f8f78, #3d6fa8);
+  border-radius: 999px;
+  border: 2px solid #e8f0f3;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #176b5a;
+}
+
+::selection {
+  background: rgba(31, 143, 120, 0.22);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: #f7fafb;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.rea-container {
+  width: min(100% - 2.5rem, var(--maxw));
+  margin-inline: auto;
+}
+
+.rea-section {
+  padding: 3rem 0;
+}
+
+.rea-kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mainclr);
+  margin-bottom: 0.65rem;
+}
+
+.rea-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.rea-lead {
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  max-width: 42rem;
+}
+
+.rea-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.35rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.rea-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(31, 143, 120, 0.18);
+}
+
+.rea-btn-primary {
+  background: var(--mainclr);
+  color: #fff;
+}
+
+.rea-btn-primary:hover {
+  background: var(--mainclr-dark);
+  color: #fff;
+}
+
+.rea-btn-secondary {
+  background: var(--secclr);
+  color: #fff;
+}
+
+.rea-btn-secondary:hover {
+  background: var(--secclr-dark);
+  color: #fff;
+}
+
+.rea-btn-ghost {
+  background: transparent;
+  color: var(--mainclr);
+  border-color: var(--mainclr);
+}
+
+.rea-btn-ghost:hover {
+  background: var(--mainclr);
+  color: #fff;
+}
+
+.rea-btn-accent {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.rea-btn-accent:hover {
+  filter: brightness(0.95);
+  color: var(--ink);
+}
+
+@keyframes rea-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rea-soft-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .rea-container {
+    width: min(100% - 1.25rem, var(--maxw));
   }
 
+  .rea-section {
+    padding: 2.25rem 0;
+  }
 }
-
-

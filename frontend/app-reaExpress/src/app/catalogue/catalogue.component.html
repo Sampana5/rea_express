@@ -1,1 +1,38 @@
-<p>catalogue works!</p>
+<section class="page">
+  <div class="rea-container">
+    <nav class="crumb">
+      <a routerLink="/home">Accueil</a>
+      <span>/</span>
+      <strong>Catalogue</strong>
+    </nav>
+
+    <div class="catalog-layout">
+      <aside class="catalog-side">
+        <h2>Le catalogue</h2>
+        <a class="active">Laboratoire</a>
+        <a routerLink="/produits">Médecine</a>
+        <a routerLink="/produits">Banque de sang</a>
+        <a routerLink="/produits">PCR</a>
+        <a routerLink="/produits">Tous les produits</a>
+      </aside>
+
+      <div class="catalog-main">
+        <header class="catalog-head">
+          <span class="rea-kicker">Catégorie</span>
+          <h1 class="rea-title">Laboratoire</h1>
+          <p class="rea-lead">Parcourez les sous-catégories — version modernisée du catalogue REA Express.</p>
+        </header>
+
+        <div class="subcat-grid">
+          <article class="subcat" *ngFor="let cat of subcategories">
+            <h3>{{ cat.title }}</h3>
+            <ul>
+              <li *ngFor="let item of cat.items">{{ item }}</li>
+            </ul>
+            <a class="subcat-link" routerLink="/mail-send">Demander un devis →</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

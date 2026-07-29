@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./mail-send.component.css']
 })
 export class MailSendComponent {
-
+  sent = false;
 }

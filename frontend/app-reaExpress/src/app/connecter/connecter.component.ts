@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connecter',
-  templateUrl: './connecter.component.html',
-  styleUrls: ['./connecter.component.css']
+  template: '',
+  styles: []
 })
-export class ConnecterComponent {
+export class ConnecterComponent implements OnInit {
+  constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    this.router.navigate(['/login']);
+  }
 }

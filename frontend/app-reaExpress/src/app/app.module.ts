@@ -1,7 +1,10 @@
 import { NgModule, NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth.interceptor';
+import { AuthGuard } from './shared/auth.guard';
+import { AdminGuard } from './shared/admin.guard';
 import { AppConfigModule } from './app-config/app-config.module';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -111,7 +114,14 @@ import { DashbordComponent } from './dashbord/dashbord.component';
   ],
   providers: [
     ItuneService,
-    ReaExpressService
+    ReaExpressService,
+    AuthGuard,
+    AdminGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [

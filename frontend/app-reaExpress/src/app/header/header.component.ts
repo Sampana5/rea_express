@@ -1,60 +1,76 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
+import { LoginResponse } from '../shared/models';
+import { ReaExpressService } from '../shared/rea-express.service';
 
-
-
-declare function Mytest(): void;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+export class HeaderComponent implements OnInit, OnDestroy {
+  menuOpen = false;
+  searchOpen = false;
+  scrolled = false;
+  searchQuery = '';
+  currentUser: LoginResponse | null = null;
+  private sub?: Subscription;
+  private routeSub?: Subscription;
 
+  constructor(private reaService: ReaExpressService, private router: Router) {}
 
-export class HeaderComponent implements OnInit{
-
-  myscriptElement: HTMLScriptElement | undefined;
+  get isAdmin(): boolean {
+    return this.reaService.isAdmin();
+  }
 
   ngOnInit(): void {
-    // let menubar = document.querySelector("#menubar");
-    // let mynav = document.querySelector(".navbar");
-
-    // menubar.
+    this.onScroll();
+    this.sub = this.reaService.currentUser$.subscribe((user) => {
+      this.currentUser = user;
+    });
+    this.routeSub = this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe(() => {
+        this.closeMenu();
+        this.searchOpen = false;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
   }
 
-  constructor(){
-    this.myscriptElement = document.createElement("script");
-    this.myscriptElement.src = "src/assets/js/custom.js";
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+    this.routeSub?.unsubscribe();
   }
 
-  CallExternalJsFunction(){
-    Mytest();
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.scrolled = window.scrollY > 8;
   }
 
-  toHome(){
-    document.getElementById("home")?.scrollIntoView({behavior:"smooth"});
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.closeMenu();
+    this.searchOpen = false;
   }
 
-  toAbout(){
-    document.getElementById("about")?.scrollIntoView({behavior:"smooth"});
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+    this.searchOpen = false;
   }
 
-  toProducts(){
-    document.getElementById("products")?.scrollIntoView({behavior:"smooth"});
+  toggleSearch(): void {
+    this.searchOpen = !this.searchOpen;
+    this.menuOpen = false;
   }
 
-  toGallery(){
-    document.getElementById("gallery")?.scrollIntoView({behavior:"smooth"});
+  closeMenu(): void {
+    this.menuOpen = false;
   }
 
-
-  toContact(){
-    document.getElementById("contact")?.scrollIntoView({behavior:"smooth"});
+  logout(): void {
+    this.reaService.logout();
+    this.closeMenu();
+    this.router.navigate(['/login']);
   }
-
-  toBgrd(){
-    document.getElementById("bgrd")?.scrollIntoView({behavior:"smooth"});
-  }
-
 }
-
-

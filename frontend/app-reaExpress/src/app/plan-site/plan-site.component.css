@@ -1,0 +1,35 @@
+.page {
+  padding: 2.5rem 0 3.5rem;
+  background: var(--surface);
+  min-height: 50vh;
+}
+
+.map {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+}
+
+.map a {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 650;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.map a:hover {
+  border-color: var(--mainclr);
+  color: var(--mainclr);
+}
+
+@media (max-width: 700px) {
+  .map {
+    grid-template-columns: 1fr 1fr;
+  }
+}

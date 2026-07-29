@@ -1,16 +1,103 @@
-<section id="dashbord">
-  <div class="dashbord">
-    <div class="main-dashbord">
-      <div class="inner-dashbord">
-          <div class="dashbord-content">
-            <br> <br> <br>
-            <h1>Espace Administrateur</h1> <br>
-
-          </div>
+<section class="admin">
+  <div class="rea-container admin-layout">
+    <aside class="admin-side">
+      <div class="admin-brand">
+        <img src="/assets/images/Logo.jpg" alt="REA Express">
+        <div>
+          <strong>REA Admin</strong>
+          <span>{{ currentUser?.name || 'Administrateur' }}</span>
         </div>
+      </div>
+      <nav>
+        <a class="active" href="#overview"><i class="fas fa-chart-pie"></i> Vue d'ensemble</a>
+        <a href="#users"><i class="fas fa-users"></i> Utilisateurs</a>
+        <a routerLink="/catalogue"><i class="fas fa-boxes"></i> Catalogue</a>
+        <a routerLink="/home"><i class="fas fa-store"></i> Boutique</a>
+        <a (click)="logout()" class="nav-logout"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+      </nav>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-top">
+        <div>
+          <span class="rea-kicker">Dashboard 2026</span>
+          <h1 class="rea-title">Espace administrateur</h1>
+        </div>
+        <div class="admin-top-meta">
+          <span class="pill live">{{ users.length }} utilisateurs</span>
+          <span class="pill">{{ currentUser?.email }}</span>
+        </div>
+      </header>
+
+      <section id="overview" class="kpi-grid">
+        <article class="kpi">
+          <div class="kpi-label">Utilisateurs</div>
+          <div class="kpi-value">{{ users.length }}</div>
+          <div class="kpi-hint">Depuis GET /users</div>
+        </article>
+        <article class="kpi">
+          <div class="kpi-label">Admins</div>
+          <div class="kpi-value">{{ adminCount }}</div>
+          <div class="kpi-hint">Rôle ROLE_ADMIN</div>
+        </article>
+        <article class="kpi">
+          <div class="kpi-label">Actifs</div>
+          <div class="kpi-value">{{ activeCount }}</div>
+          <div class="kpi-hint">Statut true</div>
+        </article>
+        <article class="kpi accent">
+          <div class="kpi-label">Infoline</div>
+          <div class="kpi-value phone">25 33 39 91</div>
+          <div class="kpi-hint">Ligne directe clients</div>
+        </article>
+      </section>
+
+      <p class="auth-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <p class="auth-success" *ngIf="successMessage">{{ successMessage }}</p>
+
+      <section class="panel" id="users">
+        <div class="panel-head">
+          <h2>Gestion des utilisateurs</h2>
+          <button type="button" class="rea-btn rea-btn-ghost" (click)="loadUsers()" [disabled]="loading">
+            {{ loading ? 'Chargement…' : 'Actualiser' }}
+          </button>
+        </div>
+
+        <div class="table-wrap" *ngIf="users.length; else emptyUsers">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Rôles</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.contactNumber }}</td>
+                <td>{{ user.roles.join(', ') }}</td>
+                <td>
+                  <span class="status" [class.on]="user.status === 'true'">{{ user.status === 'true' ? 'Actif' : 'Inactif' }}</span>
+                </td>
+                <td class="actions">
+                  <button type="button" (click)="toggleStatus(user)">{{ user.status === 'true' ? 'Désactiver' : 'Activer' }}</button>
+                  <button type="button" class="danger" (click)="deleteUser(user)">Supprimer</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #emptyUsers>
+          <p class="empty">{{ loading ? 'Chargement des utilisateurs…' : 'Aucun utilisateur trouvé.' }}</p>
+        </ng-template>
+      </section>
     </div>
   </div>
-
-
-
-
+</section>
