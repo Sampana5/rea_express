@@ -26,17 +26,9 @@
         <div class="subcat-grid">
           <article class="subcat" *ngFor="let cat of subcategories">
             <h3>{{ cat.title }}</h3>
-            <div class="product-grid">
-              <figure class="product" *ngFor="let item of cat.items">
-                <img
-                  class="product-img"
-                  [src]="item.image"
-                  [alt]="cat.title + ' — ' + item.name"
-                  loading="lazy"
-                />
-                <figcaption>{{ item.name }}</figcaption>
-              </figure>
-            </div>
+            <ul>
+              <li *ngFor="let item of cat.items">{{ item }}</li>
+            </ul>
             <a class="subcat-link" routerLink="/mail-send">Demander un devis →</a>
           </article>
         </div>
