@@ -48,6 +48,10 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String status;
 
+    /** Origine du compte : local, google ou github. */
+    @Column
+    private String provider;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",

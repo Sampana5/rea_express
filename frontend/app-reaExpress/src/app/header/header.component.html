@@ -62,8 +62,10 @@
 
     <div class="search-drawer" [class.open]="searchOpen">
       <div class="rea-container">
-        <form class="search" (submit)="$event.preventDefault()">
-          <i class="fas fa-search"></i>
+        <form class="search" (submit)="$event.preventDefault(); submitSearch()">
+          <button type="submit" class="search-submit" aria-label="Lancer la recherche">
+            <i class="fas fa-search"></i>
+          </button>
           <input type="search" placeholder="Rechercher un produit, une catégorie…" [(ngModel)]="searchQuery" name="q">
           <button type="button" class="close-search" (click)="toggleSearch()" aria-label="Fermer">×</button>
         </form>

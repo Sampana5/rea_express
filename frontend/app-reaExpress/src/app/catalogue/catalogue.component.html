@@ -9,29 +9,79 @@
     <div class="catalog-layout">
       <aside class="catalog-side">
         <h2>Le catalogue</h2>
-        <a class="active">Laboratoire</a>
-        <a routerLink="/produits">Médecine</a>
-        <a routerLink="/produits">Banque de sang</a>
-        <a routerLink="/produits">PCR</a>
-        <a routerLink="/produits">Tous les produits</a>
+        <button type="button"
+                class="catalog-side-link"
+                *ngFor="let category of categories; trackBy: trackById"
+                [class.active]="!searchMode && category.id === selectedCategory?.id"
+                (click)="showCategory(category)">
+          {{ category.name }}
+        </button>
       </aside>
 
       <div class="catalog-main">
-        <header class="catalog-head">
-          <span class="rea-kicker">Catégorie</span>
-          <h1 class="rea-title">Laboratoire</h1>
-          <p class="rea-lead">Parcourez les sous-catégories — version modernisée du catalogue REA Express.</p>
-        </header>
+        <!-- Mode recherche -->
+        <ng-container *ngIf="searchMode">
+          <header class="catalog-head">
+            <span class="rea-kicker">Recherche</span>
+            <h1 class="rea-title">Résultats pour « {{ searchTerm }} »</h1>
+            <p class="rea-lead">
+              {{ searchResults.length }} produit(s) trouvé(s).
+              <a class="catalog-clear" role="button" tabindex="0"
+                 (click)="clearSearch()" (keydown.enter)="clearSearch()">Effacer la recherche</a>
+            </p>
+          </header>
 
-        <div class="subcat-grid">
-          <article class="subcat" *ngFor="let cat of subcategories">
-            <h3>{{ cat.title }}</h3>
-            <ul>
-              <li *ngFor="let item of cat.items">{{ item }}</li>
-            </ul>
-            <a class="subcat-link" routerLink="/mail-send">Demander un devis →</a>
-          </article>
-        </div>
+          <p class="catalog-state" *ngIf="loading">Recherche en cours…</p>
+          <p class="catalog-state catalog-error" *ngIf="error && !loading">{{ error }}</p>
+          <p class="catalog-state" *ngIf="!loading && !error && !searchResults.length">
+            Aucun produit ne correspond à « {{ searchTerm }} ». Essayez un autre terme.
+          </p>
+
+          <div class="search-grid" *ngIf="!loading && !error && searchResults.length">
+            <a class="search-card" *ngFor="let product of searchResults; trackBy: trackById"
+               [routerLink]="['/produit', product.id]">
+              <img [src]="product.imageUrl || fallbackImage" [alt]="product.name" (error)="onImageError($event)">
+              <div class="search-card-body">
+                <span class="search-card-cat" *ngIf="product.subCategoryName">{{ product.subCategoryName }}</span>
+                <span class="search-card-name">{{ product.name }}</span>
+                <span class="product-ref" *ngIf="product.reference">{{ product.reference }}</span>
+              </div>
+            </a>
+          </div>
+        </ng-container>
+
+        <!-- Mode catégories -->
+        <ng-container *ngIf="!searchMode">
+          <header class="catalog-head">
+            <span class="rea-kicker">Catégorie</span>
+            <h1 class="rea-title">{{ selectedCategory?.name || 'Catalogue' }}</h1>
+            <p class="rea-lead">{{ selectedCategory?.description || 'Parcourez les sous-catégories et produits REA Express.' }}</p>
+          </header>
+
+          <p class="catalog-state" *ngIf="loading">Chargement du catalogue…</p>
+          <p class="catalog-state catalog-error" *ngIf="error && !loading">{{ error }}</p>
+          <p class="catalog-state" *ngIf="!loading && !error && !groups.length">Aucune sous-catégorie pour le moment.</p>
+
+          <div class="subcat-grid" *ngIf="!loading && !error">
+            <article class="subcat" *ngFor="let group of groups; trackBy: trackByGroup">
+              <h3>{{ group.subCategory.name }}</h3>
+
+              <ul class="product-list">
+                <li *ngFor="let product of group.products; trackBy: trackById">
+                  <a class="product-item" [routerLink]="['/produit', product.id]">
+                    <img [src]="product.imageUrl || fallbackImage" [alt]="product.name" (error)="onImageError($event)">
+                    <span class="product-name">{{ product.name }}</span>
+                    <span class="product-ref" *ngIf="product.reference">{{ product.reference }}</span>
+                  </a>
+                </li>
+                <li class="product-empty" *ngIf="!group.products.length">Produits à venir.</li>
+              </ul>
+
+              <a class="subcat-link" [routerLink]="['/mail-send']"
+                 [queryParams]="{ subcategory: group.subCategory.name }">Demander un devis →</a>
+            </article>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>

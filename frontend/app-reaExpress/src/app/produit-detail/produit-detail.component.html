@@ -1,0 +1,82 @@
+<section class="page">
+  <div class="rea-container">
+    <nav class="crumb">
+      <a routerLink="/home">Accueil</a>
+      <span>/</span>
+      <a routerLink="/catalogue">Catalogue</a>
+      <span>/</span>
+      <strong>{{ product?.name || 'Produit' }}</strong>
+    </nav>
+
+    <p class="detail-state" *ngIf="loading">Chargement du produit…</p>
+    <p class="detail-state detail-error" *ngIf="error && !loading">
+      {{ error }}
+      <a routerLink="/catalogue">← Retour au catalogue</a>
+    </p>
+
+    <div class="product-detail" *ngIf="product && !loading">
+      <div class="detail-media">
+        <div class="detail-main-img">
+          <img [src]="activeImage || fallbackImage" [alt]="product.name" (error)="onImageError($event)">
+        </div>
+        <div class="detail-thumbs" *ngIf="gallery.length > 1">
+          <button type="button" *ngFor="let image of gallery"
+                  [class.active]="image.url === activeImage"
+                  (click)="selectImage(image.url)">
+            <img [src]="image.url" [alt]="image.type || product.name" (error)="onImageError($event)">
+          </button>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <span class="rea-kicker">{{ product.categoryName }} · {{ product.subCategoryName }}</span>
+        <h1 class="rea-title">{{ product.name }}</h1>
+        <p class="detail-ref" *ngIf="product.reference">Référence : <strong>{{ product.reference }}</strong></p>
+
+        <span class="detail-availability" *ngIf="product.availability">{{ product.availability }}</span>
+
+        <dl class="detail-specs"
+            *ngIf="product.brand || product.referenceManufacturer || product.unitOfSale">
+          <ng-container *ngIf="product.brand">
+            <dt>Marque</dt>
+            <dd>{{ product.brand }}</dd>
+          </ng-container>
+          <ng-container *ngIf="product.referenceManufacturer">
+            <dt>Réf. fabricant</dt>
+            <dd>{{ product.referenceManufacturer }}</dd>
+          </ng-container>
+          <ng-container *ngIf="product.unitOfSale">
+            <dt>Conditionnement</dt>
+            <dd>{{ product.unitOfSale }}</dd>
+          </ng-container>
+        </dl>
+
+        <p class="detail-desc" *ngIf="product.description">{{ product.description }}</p>
+
+        <div class="detail-tech" *ngIf="product.technicalInfo">
+          <h2>Informations techniques</h2>
+          <p>{{ product.technicalInfo }}</p>
+        </div>
+
+        <div class="detail-docs" *ngIf="product.documents?.length">
+          <h2>Documents</h2>
+          <ul>
+            <li *ngFor="let doc of product.documents">
+              <a [href]="doc.fileUrl" target="_blank" rel="noopener">
+                <i class="fa-solid fa-file-lines"></i> {{ doc.name }}
+                <span *ngIf="doc.type">({{ doc.type }})</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="detail-cta">
+          <a class="rea-btn rea-btn-primary" [routerLink]="['/mail-send']" [queryParams]="quoteParams">
+            Demander un devis
+          </a>
+          <a class="rea-btn rea-btn-ghost" routerLink="/catalogue">Retour au catalogue</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

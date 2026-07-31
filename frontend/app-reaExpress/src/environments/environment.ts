@@ -11,6 +11,10 @@ export const environment = {
   },
   production: false,
   apiUrl: 'http://localhost:8080',
+  oauth: {
+    googleClientId: '623521202081-ondunqfnee2occjm6i2jtpn39ab4a5q4.apps.googleusercontent.com',
+    githubClientId: 'Ov23lih1sT3P2YVd7AbI'
+  },
   apiEndpoint: 'https://itunes.apple.com/',
   firebaseConfig: {
     apiKey: 'AIzaSyDPNqRofCuSpORL1FY4ZkjgmLuR2dMo4fw',

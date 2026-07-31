@@ -38,9 +38,17 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login", "/users/signup").permitAll()
+                        .requestMatchers("/auth/login", "/auth/google", "/auth/github",
+                                "/auth/forgot-password", "/auth/reset-password", "/users/signup").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/auth/me").authenticated()
+                        // Catalogue : lecture publique, écriture réservée aux admins
+                        .requestMatchers(HttpMethod.GET, "/categories", "/categories/**",
+                                "/subcategories", "/subcategories/**", "/products", "/products/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/categories", "/categories/**",
+                                "/subcategories", "/subcategories/**", "/products", "/products/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/categories/**", "/subcategories/**", "/products/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/categories/**", "/subcategories/**", "/products/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/users", "/users/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/users/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")

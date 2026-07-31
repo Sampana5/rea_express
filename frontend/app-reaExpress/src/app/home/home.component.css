@@ -12,9 +12,13 @@
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
+}
+
+.hero-copy {
+  max-width: 720px;
 }
 
 .hero-copy h1 {
@@ -84,89 +88,8 @@
   font-weight: 600;
 }
 
-.hero-panel {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--line);
-  background: #fff;
-}
-
-.hero-panel img {
-  width: 100%;
-  height: 340px;
-  object-fit: cover;
-  display: block;
-}
-
-.hero-badge {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 0.7rem 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.hero-badge strong {
-  color: var(--mainclr);
-  font-size: 1rem;
-}
-
-.hero-badge span {
-  color: var(--ink-muted);
-  font-size: 0.78rem;
-  font-weight: 650;
-}
-
-.trust-strip {
-  padding: 1.25rem 0;
-  background: #0f2a33;
-  color: #fff;
-}
-
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
-
-.trust-grid article {
-  display: flex;
-  gap: 0.85rem;
-  align-items: flex-start;
-  padding: 0.35rem 0;
-}
-
-.trust-grid i {
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 10px;
-  background: rgba(127, 212, 192, 0.18);
-  color: #7fd4c0;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-
-.trust-grid h3 {
-  font-size: 0.95rem;
-  margin-bottom: 0.2rem;
-}
-
-.trust-grid p {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
 .feature-strip {
-  padding: 1.75rem 0 0.5rem;
+  padding: 2.5rem 0 0.5rem;
   background: var(--surface);
 }
 
@@ -719,17 +642,12 @@
   .about-grid,
   .why-grid,
   .contact-grid,
-  .quick-grid,
-  .trust-grid {
+  .quick-grid {
     grid-template-columns: 1fr;
   }
 
   .category-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-panel img {
-    height: 250px;
   }
 
   .contact-visual img {

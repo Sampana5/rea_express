@@ -13,7 +13,7 @@
         <a href="#users"><i class="fas fa-users"></i> Utilisateurs</a>
         <a routerLink="/catalogue"><i class="fas fa-boxes"></i> Catalogue</a>
         <a routerLink="/home"><i class="fas fa-store"></i> Boutique</a>
-        <a (click)="logout()" class="nav-logout"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a (click)="logout()" (keydown.enter)="logout()" role="button" tabindex="0" class="nav-logout"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
       </nav>
     </aside>
 

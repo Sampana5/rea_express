@@ -122,9 +122,9 @@ public class UserServiceImpl implements UserService {
                 User existingUser = userDao.findByEmailId(requestMap.get("email"));
                 if (Objects.isNull(existingUser)) {
                     userDao.save(getUserFromMap(requestMap));
-                    return ReaUtils.getResponseEntity("Successfully Registered.", HttpStatus.OK);
+                    return ReaUtils.getResponseEntity("Inscription réussie.", HttpStatus.OK);
                 }
-                return ReaUtils.getResponseEntity("Email already exists.", HttpStatus.BAD_REQUEST);
+                return ReaUtils.getResponseEntity("Cet email est déjà utilisé.", HttpStatus.BAD_REQUEST);
             }
             return ReaUtils.getResponseEntity(ReaConstants.INVALID_DATA, HttpStatus.BAD_REQUEST);
         } catch (InvalidRoleException ex) {
@@ -141,7 +141,7 @@ public class UserServiceImpl implements UserService {
         try {
             User user = userDao.findById(id).orElse(null);
             if (Objects.isNull(user)) {
-                return ReaUtils.getResponseEntity("User not found.", HttpStatus.NOT_FOUND);
+                return ReaUtils.getResponseEntity("Utilisateur introuvable.", HttpStatus.NOT_FOUND);
             }
 
             if (requestMap.containsKey("name")) {
@@ -154,7 +154,7 @@ public class UserServiceImpl implements UserService {
                 String newEmail = requestMap.get("email");
                 User userWithSameEmail = userDao.findByEmailId(newEmail);
                 if (userWithSameEmail != null && !userWithSameEmail.getId().equals(id)) {
-                    return ReaUtils.getResponseEntity("Email already exists.", HttpStatus.BAD_REQUEST);
+                    return ReaUtils.getResponseEntity("Cet email est déjà utilisé.", HttpStatus.BAD_REQUEST);
                 }
                 user.setEmail(newEmail);
             }
@@ -169,7 +169,7 @@ public class UserServiceImpl implements UserService {
             }
 
             userDao.save(user);
-            return ReaUtils.getResponseEntity("User updated successfully.", HttpStatus.OK);
+            return ReaUtils.getResponseEntity("Utilisateur mis à jour.", HttpStatus.OK);
         } catch (InvalidRoleException ex) {
             throw ex;
         } catch (Exception ex) {
@@ -183,10 +183,10 @@ public class UserServiceImpl implements UserService {
         log.info("Deleting user {}", id);
         try {
             if (!userDao.existsById(id)) {
-                return ReaUtils.getResponseEntity("User not found.", HttpStatus.NOT_FOUND);
+                return ReaUtils.getResponseEntity("Utilisateur introuvable.", HttpStatus.NOT_FOUND);
             }
             userDao.deleteById(id);
-            return ReaUtils.getResponseEntity("User deleted successfully.", HttpStatus.OK);
+            return ReaUtils.getResponseEntity("Utilisateur supprimé.", HttpStatus.OK);
         } catch (Exception ex) {
             log.error("Delete failed for user {}", id, ex);
         }
@@ -230,3 +230,4 @@ public class UserServiceImpl implements UserService {
         throw new InvalidRoleException(ReaConstants.INVALID_ROLE);
     }
 }
+

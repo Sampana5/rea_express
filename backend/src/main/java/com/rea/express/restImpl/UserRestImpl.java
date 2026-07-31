@@ -1,13 +1,10 @@
 package com.rea.express.restImpl;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import com.rea.express.constents.ReaConstants;
 import com.rea.express.rest.UserRest;
 import com.rea.express.service.UserService;
-import com.rea.express.utils.ReaUtils;
 import com.rea.express.wrapper.UserWrapper;
 
 import java.util.List;
@@ -21,64 +18,36 @@ public class UserRestImpl implements UserRest {
 
     @Override
     public ResponseEntity<List<UserWrapper>> getAllUsers() {
-        try {
-            return userService.getAllUsers();
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        return userService.getAllUsers();
     }
 
     @Override
     public ResponseEntity<UserWrapper> getUserByIdentifier(String identifier) {
-        try {
-            return userService.getUserByIdentifier(identifier);
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        return userService.getUserByIdentifier(identifier);
     }
 
     @Override
     public ResponseEntity<UserWrapper> getUserByEmail(String email) {
-        try {
-            return userService.getUserByEmail(email);
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        return userService.getUserByEmail(email);
     }
 
     @Override
     public ResponseEntity<List<UserWrapper>> getUsersByRole(String role) {
-        try {
-            return userService.getUsersByRole(role);
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        return userService.getUsersByRole(role);
     }
 
     @Override
     public ResponseEntity<Map<String, String>> signUp(Map<String, String> requestMap) {
-        try {
-            return userService.signUp(requestMap);
-        } catch (Exception ex) {
-            return ReaUtils.getResponseEntity(ReaConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return userService.signUp(requestMap);
     }
 
     @Override
     public ResponseEntity<Map<String, String>> updateUser(Integer id, Map<String, String> requestMap) {
-        try {
-            return userService.updateUser(id, requestMap);
-        } catch (Exception ex) {
-            return ReaUtils.getResponseEntity(ReaConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return userService.updateUser(id, requestMap);
     }
 
     @Override
     public ResponseEntity<Map<String, String>> deleteUser(Integer id) {
-        try {
-            return userService.deleteUser(id);
-        } catch (Exception ex) {
-            return ReaUtils.getResponseEntity(ReaConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return userService.deleteUser(id);
     }
 }

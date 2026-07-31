@@ -1,23 +1,33 @@
 <section class="page">
   <div class="rea-container page-inner">
     <span class="rea-kicker">Contact</span>
-    <h1 class="rea-title">Écrivez-nous</h1>
+    <h1 class="rea-title">{{ hasProductContext ? 'Demander un devis' : 'Écrivez-nous' }}</h1>
     <p class="rea-lead">Une question avant achat, une livraison ou un SAV ? Laissez-nous un message.</p>
 
-    <form class="contact-form" (submit)="$event.preventDefault(); sent = true">
+    <div class="quote-product" *ngIf="hasProductContext">
+      <img *ngIf="productImage" [src]="productImage" [alt]="productName">
+      <div>
+        <strong *ngIf="productName">{{ productName }}</strong>
+        <strong *ngIf="!productName && subCategory">{{ subCategory }}</strong>
+        <span *ngIf="productReference">Référence : {{ productReference }}</span>
+      </div>
+    </div>
+
+    <form class="contact-form" #contactForm="ngForm" (submit)="$event.preventDefault(); onSubmit(contactForm)">
       <div class="form-row">
         <label for="nom">Votre nom *</label>
-        <input id="nom" type="text" required placeholder="Nom complet">
+        <input id="nom" type="text" required placeholder="Nom complet" [(ngModel)]="name" name="name">
       </div>
       <div class="form-row">
         <label for="email">E-mail *</label>
-        <input id="email" type="email" required placeholder="email@exemple.com">
+        <input id="email" type="email" required placeholder="email@exemple.com" [(ngModel)]="email" name="email">
         <small>Nous ne partagerons jamais vos informations.</small>
       </div>
       <div class="form-row">
         <label for="objet">Votre demande concerne</label>
-        <select id="objet">
+        <select id="objet" [(ngModel)]="requestType" name="requestType">
           <option>Question avant achat</option>
+          <option>Demande de devis</option>
           <option>Livraison et paiement</option>
           <option>SAV</option>
           <option>Partenariat</option>
@@ -25,14 +35,14 @@
       </div>
       <div class="form-row">
         <label for="sujet">Sujet *</label>
-        <input id="sujet" type="text" required>
+        <input id="sujet" type="text" required [(ngModel)]="subject" name="subject">
       </div>
       <div class="form-row">
         <label for="message">Message *</label>
-        <textarea id="message" rows="5" required></textarea>
+        <textarea id="message" rows="5" required [(ngModel)]="message" name="message"></textarea>
       </div>
       <button type="submit" class="rea-btn rea-btn-primary">Envoyer</button>
-      <p class="ok" *ngIf="sent">Merci — votre message a bien été enregistré (démo front).</p>
+      <p class="ok" *ngIf="sent">Merci, votre demande a bien été prise en compte. Notre équipe vous répondra dans les meilleurs délais.</p>
     </form>
 
     <aside class="contact-side">

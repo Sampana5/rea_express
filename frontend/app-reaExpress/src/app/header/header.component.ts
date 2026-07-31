@@ -68,6 +68,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuOpen = false;
   }
 
+  submitSearch(): void {
+    const query = this.searchQuery.trim();
+    if (!query) {
+      return;
+    }
+    this.searchOpen = false;
+    this.searchQuery = '';
+    this.router.navigate(['/catalogue'], { queryParams: { q: query } });
+  }
+
   logout(): void {
     this.reaService.logout();
     this.closeMenu();

@@ -236,6 +236,19 @@
   color: var(--ink-muted);
 }
 
+.search-submit {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.search-submit:hover i {
+  color: var(--mainclr);
+}
+
 .search input {
   flex: 1;
   border: 0;
