@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LoginResponse } from '../shared/models';
 import { ReaExpressService } from '../shared/rea-express.service';
+import { CartService } from '../shared/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +16,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   scrolled = false;
   searchQuery = '';
   currentUser: LoginResponse | null = null;
+  cartCount = 0;
   private sub?: Subscription;
+  private cartSub?: Subscription;
   private routeSub?: Subscription;
 
-  constructor(private reaService: ReaExpressService, private router: Router) {}
+  constructor(
+    private reaService: ReaExpressService,
+    private cartService: CartService,
+    private router: Router
+  ) {}
 
   get isAdmin(): boolean {
     return this.reaService.isAdmin();
@@ -28,6 +35,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.onScroll();
     this.sub = this.reaService.currentUser$.subscribe((user) => {
       this.currentUser = user;
+    });
+    this.cartSub = this.cartService.itemCount$.subscribe((count) => {
+      this.cartCount = count;
     });
     this.routeSub = this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
@@ -40,6 +50,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+    this.cartSub?.unsubscribe();
     this.routeSub?.unsubscribe();
   }
 

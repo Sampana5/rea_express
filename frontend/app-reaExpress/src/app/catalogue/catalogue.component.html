@@ -77,8 +77,7 @@
                 <li class="product-empty" *ngIf="!group.products.length">Produits à venir.</li>
               </ul>
 
-              <a class="subcat-link" [routerLink]="['/mail-send']"
-                 [queryParams]="{ subcategory: group.subCategory.name }">Demander un devis →</a>
+              <a class="subcat-link" routerLink="/voir-panier">Voir le panier →</a>
             </article>
           </div>
         </ng-container>

@@ -42,8 +42,9 @@
         <button type="button" class="icon-btn ghost" (click)="toggleSearch()" aria-label="Recherche">
           <i class="fas fa-search"></i>
         </button>
-        <a routerLink="/voir-panier" class="icon-btn ghost" title="Panier" (click)="closeMenu()">
+        <a routerLink="/voir-panier" class="icon-btn ghost cart-btn" title="Panier" aria-label="Panier" (click)="closeMenu()">
           <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount > 99 ? '99+' : cartCount }}</span>
         </a>
         <a *ngIf="!currentUser" routerLink="/login" class="icon-btn account" (click)="closeMenu()">
           Connexion
@@ -89,6 +90,7 @@
     <a routerLink="/faq" (click)="closeMenu()">FAQ</a>
     <a routerLink="/temoignages" (click)="closeMenu()">Témoignages</a>
     <a routerLink="/mail-send" (click)="closeMenu()">Nous joindre</a>
+    <a routerLink="/voir-panier" (click)="closeMenu()">Panier{{ cartCount ? ' (' + cartCount + ')' : '' }}</a>
     <a routerLink="/login" (click)="closeMenu()">Connexion</a>
   </nav>
 </aside>

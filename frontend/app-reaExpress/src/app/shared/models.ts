@@ -81,3 +81,79 @@ export interface Product {
   images?: ProductImage[];
   documents?: ProductDocument[];
 }
+
+export interface CartItem {
+  productId: number;
+  productName: string;
+  productReference?: string;
+  productImageUrl?: string;
+  availability?: string;
+  quantity: number;
+}
+
+export interface Cart {
+  id?: number;
+  items: CartItem[];
+  itemCount: number;
+  totalQuantity: number;
+}
+
+export type QuoteStatus =
+  | 'PENDING'
+  | 'IN_REVIEW'
+  | 'QUOTED'
+  | 'ACCEPTED'
+  | 'CANCELLED'
+  | 'AWAITING_PAYMENT'
+  | 'PAID'
+  | 'FULFILLED';
+
+export type PaymentStatus = 'NONE' | 'PENDING' | 'PAID' | 'FAILED' | 'REFUNDED';
+
+export interface QuoteItem {
+  productId?: number;
+  productName: string;
+  productReference?: string;
+  productImageUrl?: string;
+  quantity: number;
+}
+
+export interface Quote {
+  id: number;
+  reference: string;
+  status: QuoteStatus;
+  paymentStatus: PaymentStatus;
+  clientMessage?: string;
+  adminNotes?: string;
+  quotedAmount?: number;
+  currency: string;
+  createdAt: string;
+  updatedAt: string;
+  userId?: number;
+  userName?: string;
+  userEmail?: string;
+  userContact?: string;
+  items: QuoteItem[];
+  totalQuantity: number;
+}
+
+export interface QuoteCreateRequest {
+  message?: string;
+}
+
+export interface QuoteStatusUpdate {
+  status: QuoteStatus;
+  adminNotes?: string;
+  quotedAmount?: number | null;
+}
+
+export interface AdminStats {
+  users: number;
+  activeUsers: number;
+  admins: number;
+  products: number;
+  categories: number;
+  quotes: number;
+  pendingQuotes: number;
+  quotedQuotes: number;
+}

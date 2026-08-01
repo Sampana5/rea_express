@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReaExpressService } from '../shared/rea-express.service';
 
 @Component({
@@ -8,20 +8,29 @@ import { ReaExpressService } from '../shared/rea-express.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   errorMessage = '';
+  private returnUrl = '/espace-client';
 
   constructor(
     private fb: FormBuilder,
     private reaService: ReaExpressService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
+  }
+
+  ngOnInit(): void {
+    const raw = this.route.snapshot.queryParamMap.get('returnUrl');
+    if (raw && raw.startsWith('/') && !raw.startsWith('//')) {
+      this.returnUrl = raw;
+    }
   }
 
   onSubmit(): void {
@@ -35,10 +44,10 @@ export class LoginComponent {
     this.reaService.login(this.form.value).subscribe({
       next: (user) => {
         this.loading = false;
-        if (user.roles?.includes('ROLE_ADMIN')) {
+        if (user.roles?.includes('ROLE_ADMIN') && this.returnUrl === '/espace-client') {
           this.router.navigate(['/dashbord']);
         } else {
-          this.router.navigate(['/espace-client']);
+          this.router.navigateByUrl(this.returnUrl);
         }
       },
       error: (err) => {

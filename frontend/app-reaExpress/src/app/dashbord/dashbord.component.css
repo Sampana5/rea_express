@@ -387,3 +387,143 @@ th {
     grid-template-columns: 1fr;
   }
 }
+
+.nav-count {
+  margin-left: auto;
+  background: var(--accent);
+  color: #1a1a1a;
+  font-size: 0.7rem;
+  font-weight: 800;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  border-radius: 999px;
+  padding: 0 0.35rem;
+}
+
+.quotes-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 0.85rem;
+  align-items: start;
+}
+
+.quotes-layout tbody tr {
+  cursor: pointer;
+}
+
+.quotes-layout tbody tr.selected,
+.quotes-layout tbody tr:hover {
+  background: var(--mainclr-light);
+}
+
+.quotes-layout small {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+}
+
+.status-chip {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #eef2f6;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.status-chip[data-status="PENDING"],
+.status-chip[data-status="IN_REVIEW"] {
+  background: #fff4ce;
+  color: #8a6a00;
+}
+
+.status-chip[data-status="QUOTED"],
+.status-chip[data-status="ACCEPTED"] {
+  background: var(--mainclr-light);
+  color: var(--mainclr-dark);
+}
+
+.status-chip[data-status="CANCELLED"] {
+  background: #fde8e8;
+  color: #b42318;
+}
+
+.quote-detail label {
+  display: block;
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+}
+
+.quote-detail select,
+.quote-detail input,
+.quote-detail textarea {
+  width: 100%;
+  margin-top: 0.3rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+}
+
+.detail-meta,
+.client-msg,
+.payment-hint {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+.quote-items {
+  list-style: none;
+  margin: 0.85rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.quote-items li {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.45rem;
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.quote-items img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.quote-items strong {
+  display: block;
+  font-size: 0.88rem;
+}
+
+.quote-items span {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.quote-items .qty {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.quote-detail .rea-btn {
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 980px) {
+  .quotes-layout {
+    grid-template-columns: 1fr;
+  }
+}

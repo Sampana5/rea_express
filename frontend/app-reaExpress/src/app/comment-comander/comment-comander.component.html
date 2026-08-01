@@ -1,49 +1,54 @@
 <section class="page">
   <div class="rea-container narrow">
-    <nav class="crumb">
+    <nav class="crumb" aria-label="Fil d'Ariane">
       <a routerLink="/home">Accueil</a>
-      <span>/</span>
+      <span aria-hidden="true">/</span>
       <strong>Comment commander</strong>
     </nav>
     <span class="rea-kicker">Guide</span>
     <h1 class="rea-title">Comment commander</h1>
-    <p class="rea-lead">Suivez ces étapes pour passer commande en ligne chez REA Express.</p>
+    <p class="rea-lead">
+      Créez un compte, composez votre panier, puis validez une demande de devis.
+      Le paiement en ligne arrivera dans une prochaine mise à jour.
+    </p>
 
     <ol class="steps">
       <li>
-        <h2>1. Identification</h2>
+        <h2>1. Créer un compte ou se connecter</h2>
         <p>
-          Connectez-vous depuis <a routerLink="/login">Mon compte</a>.
-          Si vous n'avez pas encore de compte,
-          <a routerLink="/signup">inscrivez-vous gratuitement</a>.
+          <a routerLink="/signup">Inscrivez-vous</a> ou
+          <a routerLink="/login">connectez-vous</a> — le panier est lié à votre compte.
         </p>
       </li>
       <li>
-        <h2>2. Recherche des produits</h2>
+        <h2>2. Parcourir le catalogue</h2>
         <p>
-          Parcourez le <a routerLink="/catalogue">catalogue</a> (laboratoire, médecine, banque de sang, PCR)
-          ou utilisez la recherche rapide.
+          Explorez le <a routerLink="/catalogue">catalogue</a>
+          (laboratoire, médecine, banque de sang, PCR) ou utilisez la recherche.
         </p>
       </li>
       <li>
-        <h2>3. Choix des produits</h2>
+        <h2>3. Ajouter au panier</h2>
         <p>
-          Ajoutez les articles à votre <a routerLink="/voir-panier">panier</a> en précisant les quantités.
+          Ouvrez une fiche produit, choisissez la quantité, puis cliquez sur
+          <strong>Ajouter au panier</strong>. Vous pouvez cumuler plusieurs articles.
         </p>
       </li>
       <li>
-        <h2>4. Validation</h2>
+        <h2>4. Valider — demander un devis</h2>
         <p>
-          Vérifiez votre panier puis validez. Pour un devis ou une commande assistée,
-          <a routerLink="/mail-send">contactez-nous</a> au +226 25 33 39 91.
+          Dans votre <a routerLink="/voir-panier">panier</a>, vérifiez les quantités
+          puis cliquez sur <strong>Demander un devis</strong>. Notre équipe vous répond
+          avec tarif et délai. Vous pouvez aussi nous joindre au
+          <a href="tel:+22625333991">+226 25 33 39 91</a>.
         </p>
       </li>
     </ol>
 
     <div class="page-actions">
       <a class="rea-btn rea-btn-primary" routerLink="/catalogue">Ouvrir le catalogue</a>
-      <a class="rea-btn rea-btn-ghost" routerLink="/plan-acces">Plan d'accès</a>
-      <a class="rea-btn rea-btn-ghost" routerLink="/condition-vente">Conditions de vente</a>
+      <a class="rea-btn rea-btn-ghost" routerLink="/voir-panier">Voir le panier</a>
+      <a class="rea-btn rea-btn-ghost" routerLink="/faq">FAQ</a>
     </div>
   </div>
 </section>

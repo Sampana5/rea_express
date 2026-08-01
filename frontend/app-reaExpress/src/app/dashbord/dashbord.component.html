@@ -9,60 +9,181 @@
         </div>
       </div>
       <nav>
-        <a class="active" href="#overview"><i class="fas fa-chart-pie"></i> Vue d'ensemble</a>
-        <a href="#users"><i class="fas fa-users"></i> Utilisateurs</a>
+        <a href="javascript:void(0)" [class.active]="tab === 'overview'" (click)="setTab('overview')">
+          <i class="fas fa-chart-pie"></i> Vue d'ensemble
+        </a>
+        <a href="javascript:void(0)" [class.active]="tab === 'quotes'" (click)="setTab('quotes')">
+          <i class="fas fa-file-invoice"></i> Devis
+          <span class="nav-count" *ngIf="stats?.pendingQuotes">{{ stats?.pendingQuotes }}</span>
+        </a>
+        <a href="javascript:void(0)" [class.active]="tab === 'users'" (click)="setTab('users')">
+          <i class="fas fa-users"></i> Utilisateurs
+        </a>
         <a routerLink="/catalogue"><i class="fas fa-boxes"></i> Catalogue</a>
         <a routerLink="/home"><i class="fas fa-store"></i> Boutique</a>
-        <a (click)="logout()" (keydown.enter)="logout()" role="button" tabindex="0" class="nav-logout"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a (click)="logout()" (keydown.enter)="logout()" role="button" tabindex="0" class="nav-logout">
+          <i class="fas fa-sign-out-alt"></i> Déconnexion
+        </a>
       </nav>
     </aside>
 
     <div class="admin-main">
       <header class="admin-top">
         <div>
-          <span class="rea-kicker">Dashboard 2026</span>
+          <span class="rea-kicker">Pilotage</span>
           <h1 class="rea-title">Espace administrateur</h1>
         </div>
         <div class="admin-top-meta">
-          <span class="pill live">{{ users.length }} utilisateurs</span>
+          <button type="button" class="rea-btn rea-btn-ghost" (click)="refresh()" [disabled]="loading">
+            {{ loading ? 'Chargement…' : 'Actualiser' }}
+          </button>
           <span class="pill">{{ currentUser?.email }}</span>
         </div>
       </header>
 
-      <section id="overview" class="kpi-grid">
-        <article class="kpi">
-          <div class="kpi-label">Utilisateurs</div>
-          <div class="kpi-value">{{ users.length }}</div>
-          <div class="kpi-hint">Depuis GET /users</div>
-        </article>
-        <article class="kpi">
-          <div class="kpi-label">Admins</div>
-          <div class="kpi-value">{{ adminCount }}</div>
-          <div class="kpi-hint">Rôle ROLE_ADMIN</div>
-        </article>
-        <article class="kpi">
-          <div class="kpi-label">Actifs</div>
-          <div class="kpi-value">{{ activeCount }}</div>
-          <div class="kpi-hint">Statut true</div>
-        </article>
-        <article class="kpi accent">
-          <div class="kpi-label">Infoline</div>
-          <div class="kpi-value phone">25 33 39 91</div>
-          <div class="kpi-hint">Ligne directe clients</div>
-        </article>
-      </section>
-
       <p class="auth-error" *ngIf="errorMessage">{{ errorMessage }}</p>
       <p class="auth-success" *ngIf="successMessage">{{ successMessage }}</p>
 
-      <section class="panel" id="users">
+      <!-- Overview -->
+      <section class="kpi-grid" *ngIf="tab === 'overview'">
+        <article class="kpi">
+          <div class="kpi-label">Devis en attente</div>
+          <div class="kpi-value">{{ stats?.pendingQuotes ?? '—' }}</div>
+          <div class="kpi-hint">À traiter en priorité</div>
+        </article>
+        <article class="kpi">
+          <div class="kpi-label">Devis total</div>
+          <div class="kpi-value">{{ stats?.quotes ?? '—' }}</div>
+          <div class="kpi-hint">{{ stats?.quotedQuotes || 0 }} déjà chiffrés</div>
+        </article>
+        <article class="kpi">
+          <div class="kpi-label">Produits</div>
+          <div class="kpi-value">{{ stats?.products ?? '—' }}</div>
+          <div class="kpi-hint">{{ stats?.categories || 0 }} catégories</div>
+        </article>
+        <article class="kpi accent">
+          <div class="kpi-label">Clients actifs</div>
+          <div class="kpi-value">{{ stats?.activeUsers ?? '—' }}</div>
+          <div class="kpi-hint">{{ stats?.users || 0 }} comptes · {{ stats?.admins || 0 }} admin</div>
+        </article>
+      </section>
+
+      <section class="panel" *ngIf="tab === 'overview'">
         <div class="panel-head">
-          <h2>Gestion des utilisateurs</h2>
-          <button type="button" class="rea-btn rea-btn-ghost" (click)="loadUsers()" [disabled]="loading">
-            {{ loading ? 'Chargement…' : 'Actualiser' }}
-          </button>
+          <h2>Derniers devis</h2>
+          <button type="button" class="rea-btn rea-btn-ghost" (click)="setTab('quotes')">Tout voir</button>
+        </div>
+        <div class="table-wrap" *ngIf="quotes.length; else emptyQuotesOverview">
+          <table>
+            <thead>
+              <tr>
+                <th>Référence</th>
+                <th>Client</th>
+                <th>Articles</th>
+                <th>Statut</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let quote of quotes | slice:0:6">
+                <td><strong>{{ quote.reference }}</strong></td>
+                <td>{{ quote.userName }}</td>
+                <td>{{ quote.totalQuantity }}</td>
+                <td><span class="status-chip" [attr.data-status]="quote.status">{{ statusLabel(quote.status) }}</span></td>
+                <td><button type="button" (click)="selectQuote(quote)">Ouvrir</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #emptyQuotesOverview>
+          <p class="empty">{{ loading ? 'Chargement…' : 'Aucun devis pour le moment.' }}</p>
+        </ng-template>
+      </section>
+
+      <!-- Quotes -->
+      <section class="quotes-layout" *ngIf="tab === 'quotes'">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Demandes de devis</h2>
+          </div>
+          <div class="table-wrap" *ngIf="quotes.length; else emptyQuotes">
+            <table>
+              <thead>
+                <tr>
+                  <th>Référence</th>
+                  <th>Client</th>
+                  <th>Date</th>
+                  <th>Statut</th>
+                  <th>Paiement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let quote of quotes"
+                    [class.selected]="selectedQuote?.id === quote.id"
+                    (click)="selectQuote(quote)">
+                  <td><strong>{{ quote.reference }}</strong></td>
+                  <td>
+                    <div>{{ quote.userName }}</div>
+                    <small>{{ quote.userEmail }}</small>
+                  </td>
+                  <td>{{ quote.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
+                  <td><span class="status-chip" [attr.data-status]="quote.status">{{ statusLabel(quote.status) }}</span></td>
+                  <td>{{ quote.paymentStatus }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ng-template #emptyQuotes>
+            <p class="empty">{{ loading ? 'Chargement…' : 'Aucune demande de devis.' }}</p>
+          </ng-template>
         </div>
 
+        <aside class="panel quote-detail" *ngIf="selectedQuote">
+          <div class="panel-head">
+            <h2>{{ selectedQuote.reference }}</h2>
+          </div>
+          <p class="detail-meta">
+            {{ selectedQuote.userName }} · {{ selectedQuote.userEmail }}
+            <span *ngIf="selectedQuote.userContact"> · {{ selectedQuote.userContact }}</span>
+          </p>
+          <p class="client-msg" *ngIf="selectedQuote.clientMessage">
+            <strong>Message client</strong><br>{{ selectedQuote.clientMessage }}
+          </p>
+
+          <ul class="quote-items">
+            <li *ngFor="let item of selectedQuote.items">
+              <img [src]="item.productImageUrl || '/assets/images/Logo.jpg'" [alt]="item.productName">
+              <div>
+                <strong>{{ item.productName }}</strong>
+                <span *ngIf="item.productReference">Réf. {{ item.productReference }}</span>
+              </div>
+              <span class="qty">× {{ item.quantity }}</span>
+            </li>
+          </ul>
+
+          <label for="q-status">Statut</label>
+          <select id="q-status" [(ngModel)]="nextStatus">
+            <option *ngFor="let s of statuses" [value]="s">{{ statusLabel(s) }}</option>
+          </select>
+
+          <label for="q-amount">Montant devis (XOF)</label>
+          <input id="q-amount" type="number" min="0" step="1" [(ngModel)]="quotedAmount" placeholder="Optionnel">
+
+          <label for="q-notes">Notes internes</label>
+          <textarea id="q-notes" rows="3" [(ngModel)]="adminNotes"></textarea>
+
+          <button type="button" class="rea-btn rea-btn-primary" (click)="saveQuote()">Enregistrer</button>
+          <p class="payment-hint">
+            Les statuts « Paiement / Payé / Livré » préparent l’intégration paiement future.
+          </p>
+        </aside>
+      </section>
+
+      <!-- Users -->
+      <section class="panel" *ngIf="tab === 'users'">
+        <div class="panel-head">
+          <h2>Gestion des utilisateurs</h2>
+        </div>
         <div class="table-wrap" *ngIf="users.length; else emptyUsers">
           <table>
             <thead>

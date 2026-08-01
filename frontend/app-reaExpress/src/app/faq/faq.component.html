@@ -1,32 +1,79 @@
 <section class="page">
   <div class="rea-container narrow">
+    <nav class="crumb" aria-label="Fil d'Ariane">
+      <a routerLink="/home">Accueil</a>
+      <span aria-hidden="true">/</span>
+      <strong>FAQ</strong>
+    </nav>
+
     <span class="rea-kicker">Aide</span>
     <h1 class="rea-title">Foire aux questions</h1>
     <p class="rea-lead">Les réponses aux questions les plus fréquentes de nos clients.</p>
 
     <div class="faq-list">
       <details open>
-        <summary>Comment passer une commande ?</summary>
-        <p>Créez un compte, parcourez le catalogue, ajoutez vos articles au panier puis validez. Vous pouvez aussi nous appeler au +226 25 33 39 91.</p>
+        <summary>Comment passer une commande&nbsp;?</summary>
+        <div class="faq-answer">
+          <p>
+            Créez un compte, parcourez le <a routerLink="/catalogue">catalogue</a>,
+            ajoutez vos articles au <a routerLink="/voir-panier">panier</a> puis validez
+            une demande de devis. Vous pouvez aussi nous appeler au
+            <a [href]="phoneHref">{{ phoneDisplay }}</a>.
+          </p>
+          <p>
+            Guide détaillé&nbsp;:
+            <a routerLink="/comment-commander">Comment commander</a>.
+          </p>
+        </div>
       </details>
+
       <details>
-        <summary>Quels sont les délais de livraison ?</summary>
-        <p>À Ouagadougou, la livraison se fait généralement sous 24 à 72 h selon le stock. Pour la sous-région, contactez-nous pour un devis.</p>
+        <summary>Faut-il un compte pour utiliser le panier&nbsp;?</summary>
+        <div class="faq-answer">
+          <p>
+            Oui. L’ajout au panier nécessite une
+            <a routerLink="/login">connexion</a> ou une
+            <a routerLink="/signup">inscription</a>.
+          </p>
+        </div>
       </details>
+
       <details>
-        <summary>Proposez-vous un service après-vente ?</summary>
-        <p>Oui. Notre mission inclut un SAV efficace pour sécuriser vos investissements en équipements.</p>
+        <summary>Le paiement se fait-il en ligne&nbsp;?</summary>
+        <div class="faq-answer">
+          <p>
+            Pour l’instant, la validation du panier génère une demande de devis.
+            Le paiement en ligne sera intégré dans une prochaine mise à jour.
+            Les modalités actuelles figurent dans les
+            <a routerLink="/condition-vente">conditions de vente</a>.
+          </p>
+        </div>
       </details>
+
       <details>
-        <summary>Comment créer un compte client ?</summary>
-        <p>Cliquez sur « Connexion » puis « S'inscrire ». Renseignez nom, téléphone, e-mail et mot de passe.</p>
+        <summary>Quels sont les délais de livraison&nbsp;?</summary>
+        <div class="faq-answer">
+          <p>
+            À Ouagadougou, la livraison se fait généralement sous 24 à 72&nbsp;h selon le stock.
+            Pour l’intérieur du pays ou la sous-région, le délai est précisé sur le devis.
+          </p>
+        </div>
       </details>
+
       <details>
-        <summary>Quels modes de paiement acceptez-vous ?</summary>
-        <p>Virement, espèces et conditions négociées pour les établissements de santé. Voir aussi les conditions de vente.</p>
+        <summary>Proposez-vous un service après-vente&nbsp;?</summary>
+        <div class="faq-answer">
+          <p>
+            Oui. Contactez-nous via le <a routerLink="/mail-send">formulaire</a>
+            (objet «&nbsp;SAV&nbsp;») ou au <a [href]="phoneHref">{{ phoneDisplay }}</a>.
+          </p>
+        </div>
       </details>
     </div>
 
-    <a class="rea-btn rea-btn-primary" routerLink="/mail-send">Une autre question ? Contactez-nous</a>
+    <div class="page-actions">
+      <a class="rea-btn rea-btn-primary" routerLink="/catalogue">Voir le catalogue</a>
+      <a class="rea-btn rea-btn-ghost" routerLink="/voir-panier">Mon panier</a>
+    </div>
   </div>
 </section>

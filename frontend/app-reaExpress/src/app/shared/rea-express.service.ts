@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {
+  AdminStats,
   Category,
   LoginRequest,
   LoginResponse,
@@ -143,6 +144,10 @@ export class ReaExpressService {
 
   deleteProduct(id: number): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(`${this.apiUrl}/products/${id}`);
+  }
+
+  getAdminStats(): Observable<AdminStats> {
+    return this.http.get<AdminStats>(`${this.apiUrl}/quotes/admin/stats`);
   }
 
   logout(): void {

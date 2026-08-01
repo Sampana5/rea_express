@@ -1,10 +1,10 @@
 <section class="page">
   <div class="rea-container">
-    <nav class="crumb">
+    <nav class="crumb" aria-label="Fil d'Ariane">
       <a routerLink="/home">Accueil</a>
-      <span>/</span>
+      <span aria-hidden="true">/</span>
       <a routerLink="/catalogue">Catalogue</a>
-      <span>/</span>
+      <span aria-hidden="true">/</span>
       <strong>{{ product?.name || 'Produit' }}</strong>
     </nav>
 
@@ -70,12 +70,21 @@
           </ul>
         </div>
 
-        <div class="detail-cta">
-          <a class="rea-btn rea-btn-primary" [routerLink]="['/mail-send']" [queryParams]="quoteParams">
-            Demander un devis
-          </a>
-          <a class="rea-btn rea-btn-ghost" routerLink="/catalogue">Retour au catalogue</a>
+        <div class="detail-cart">
+          <div class="qty" aria-label="Quantité">
+            <button type="button" (click)="changeQty(-1)" [disabled]="quantity <= 1" aria-label="Diminuer">−</button>
+            <input type="number" min="1" max="9999" [(ngModel)]="quantity" name="qty">
+            <button type="button" (click)="changeQty(1)" aria-label="Augmenter">+</button>
+          </div>
+          <button type="button" class="rea-btn rea-btn-primary" (click)="addToCart()" [disabled]="adding">
+            {{ adding ? 'Ajout…' : (isLoggedIn ? 'Ajouter au panier' : 'Se connecter pour ajouter') }}
+          </button>
+          <a class="rea-btn rea-btn-ghost" routerLink="/voir-panier">Voir le panier</a>
         </div>
+        <p class="cart-feedback" [class.error]="feedbackError" *ngIf="feedback">{{ feedback }}</p>
+        <p class="cart-hint" *ngIf="!isLoggedIn">
+          Créez un compte ou connectez-vous pour constituer votre panier, puis demandez un devis.
+        </p>
       </div>
     </div>
   </div>

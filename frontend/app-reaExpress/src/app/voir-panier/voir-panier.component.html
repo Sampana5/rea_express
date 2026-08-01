@@ -1,11 +1,81 @@
 <section class="page">
-  <div class="rea-container narrow">
+  <div class="rea-container cart-wrap">
+    <nav class="crumb" aria-label="Fil d'Ariane">
+      <a routerLink="/home">Accueil</a>
+      <span aria-hidden="true">/</span>
+      <strong>Panier</strong>
+    </nav>
+
     <span class="rea-kicker">Panier</span>
     <h1 class="rea-title">Votre panier</h1>
-    <div class="empty">
-      <i class="fas fa-shopping-cart"></i>
-      <p>Votre panier est vide pour le moment.</p>
-      <a class="rea-btn rea-btn-primary" routerLink="/catalogue">Parcourir le catalogue</a>
+    <p class="rea-lead">
+      Ajoutez vos articles, puis validez une demande de devis.
+      Le paiement en ligne arrivera dans une prochaine mise à jour.
+    </p>
+
+    <div class="guest" *ngIf="!isLoggedIn">
+      <i class="fas fa-user-lock" aria-hidden="true"></i>
+      <p>Connectez-vous ou créez un compte pour constituer votre panier.</p>
+      <div class="guest-actions">
+        <button type="button" class="rea-btn rea-btn-primary" (click)="goLogin()">Se connecter</button>
+        <a class="rea-btn rea-btn-ghost" routerLink="/signup">Créer un compte</a>
+      </div>
     </div>
+
+    <ng-container *ngIf="isLoggedIn">
+      <p class="state" *ngIf="loading">Chargement du panier…</p>
+      <p class="state error" *ngIf="error">{{ error }}</p>
+      <p class="state ok" *ngIf="success">{{ success }}</p>
+
+      <div class="empty" *ngIf="!loading && !cart.items.length && !lastQuote">
+        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+        <p>Votre panier est vide pour le moment.</p>
+        <a class="rea-btn rea-btn-primary" routerLink="/catalogue">Parcourir le catalogue</a>
+      </div>
+
+      <div class="cart-layout" *ngIf="!loading && cart.items.length">
+        <div class="cart-list">
+          <article class="cart-line" *ngFor="let item of cart.items">
+            <a class="cart-thumb" [routerLink]="['/produit', item.productId]">
+              <img [src]="item.productImageUrl || fallbackImage" [alt]="item.productName" (error)="onImageError($event)">
+            </a>
+            <div class="cart-info">
+              <a [routerLink]="['/produit', item.productId]">{{ item.productName }}</a>
+              <span *ngIf="item.productReference">Réf. {{ item.productReference }}</span>
+              <span class="avail" *ngIf="item.availability">{{ item.availability }}</span>
+            </div>
+            <div class="cart-qty">
+              <label [attr.for]="'qty-' + item.productId">Qté</label>
+              <input [id]="'qty-' + item.productId" type="number" min="1" max="9999"
+                     [ngModel]="item.quantity"
+                     (change)="updateQty(item, $any($event.target).value)">
+            </div>
+            <button type="button" class="link-danger" (click)="remove(item)">Retirer</button>
+          </article>
+        </div>
+
+        <aside class="cart-summary">
+          <h2>Validation</h2>
+          <p><strong>{{ cart.itemCount }}</strong> article(s) · <strong>{{ cart.totalQuantity }}</strong> unité(s)</p>
+          <label for="quote-msg">Message (optionnel)</label>
+          <textarea id="quote-msg" rows="4" [(ngModel)]="message"
+                    placeholder="Précisez quantités globales, délai souhaité, établissement…"></textarea>
+          <button type="button" class="rea-btn rea-btn-primary" (click)="requestQuote()" [disabled]="submitting">
+            {{ submitting ? 'Envoi…' : 'Demander un devis' }}
+          </button>
+          <button type="button" class="rea-btn rea-btn-ghost" (click)="clear()" [disabled]="submitting">Vider le panier</button>
+          <p class="summary-note">
+            Aucun paiement n’est demandé pour l’instant. Vous recevrez un devis personnalisé.
+          </p>
+        </aside>
+      </div>
+
+      <div class="quote-done" *ngIf="lastQuote">
+        <h2>Devis {{ lastQuote.reference }}</h2>
+        <p>Statut : {{ lastQuote.status }} · {{ lastQuote.totalQuantity }} unité(s)</p>
+        <a class="rea-btn rea-btn-primary" routerLink="/espace-client">Voir mes devis</a>
+        <a class="rea-btn rea-btn-ghost" routerLink="/catalogue">Continuer vos achats</a>
+      </div>
+    </ng-container>
   </div>
 </section>

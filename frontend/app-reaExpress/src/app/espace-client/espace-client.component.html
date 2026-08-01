@@ -2,7 +2,7 @@
   <div class="rea-container">
     <span class="rea-kicker">Espace client</span>
     <h1 class="rea-title">Bonjour {{ profile?.name || user?.name || 'Client' }}</h1>
-    <p class="rea-lead">Votre compte REA Express est connecté au backend.</p>
+    <p class="rea-lead">Suivez vos devis et continuez vos achats depuis votre compte.</p>
 
     <p class="auth-error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
@@ -12,16 +12,36 @@
         <p><strong>Email :</strong> {{ profile?.email || user?.email }}</p>
         <p><strong>Téléphone :</strong> {{ profile?.contactNumber || user?.contactNumber }}</p>
         <p><strong>Statut :</strong> {{ (profile?.status || user?.status) === 'true' ? 'Actif' : 'Inactif' }}</p>
-        <p><strong>Rôles :</strong> {{ (profile?.roles || user?.roles)?.join(', ') }}</p>
       </article>
 
       <article class="client-card">
         <h2>Actions</h2>
-        <a class="rea-btn rea-btn-primary" routerLink="/catalogue">Voir le catalogue</a>
+        <a class="rea-btn rea-btn-primary" routerLink="/catalogue">Catalogue</a>
         <a class="rea-btn rea-btn-ghost" routerLink="/voir-panier">Mon panier</a>
         <a class="rea-btn rea-btn-secondary" *ngIf="isAdmin" routerLink="/dashbord">Dashboard admin</a>
         <button type="button" class="rea-btn rea-btn-ghost" (click)="logout()">Se déconnecter</button>
       </article>
     </div>
+
+    <section class="client-quotes" *ngIf="quotes.length">
+      <h2>Mes devis</h2>
+      <div class="quote-cards">
+        <article class="quote-card" *ngFor="let quote of quotes">
+          <header>
+            <strong>{{ quote.reference }}</strong>
+            <span>{{ statusLabel(quote.status) }}</span>
+          </header>
+          <p>{{ quote.totalQuantity }} unité(s) · {{ quote.createdAt | date:'dd/MM/yyyy' }}</p>
+          <p *ngIf="quote.quotedAmount != null">
+            Montant proposé : <strong>{{ quote.quotedAmount | number:'1.0-0' }} {{ quote.currency }}</strong>
+          </p>
+          <ul>
+            <li *ngFor="let item of quote.items">
+              {{ item.productName }} × {{ item.quantity }}
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
   </div>
 </section>

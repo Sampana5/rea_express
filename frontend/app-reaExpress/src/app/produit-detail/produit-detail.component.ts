@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReaExpressService } from '../shared/rea-express.service';
+import { CartService } from '../shared/cart.service';
 import { Product, ProductImage } from '../shared/models';
 
 @Component({
@@ -13,11 +14,17 @@ export class ProduitDetailComponent implements OnInit {
   activeImage = '';
   loading = false;
   error = '';
+  quantity = 1;
+  adding = false;
+  feedback = '';
+  feedbackError = false;
   readonly fallbackImage = 'assets/images/Logo.jpg';
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly api: ReaExpressService
+    private readonly router: Router,
+    private readonly api: ReaExpressService,
+    private readonly cart: CartService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +42,7 @@ export class ProduitDetailComponent implements OnInit {
     this.loading = true;
     this.error = '';
     this.product = undefined;
+    this.feedback = '';
     this.api.getProduct(id).subscribe({
       next: (product) => {
         this.product = product;
@@ -52,6 +60,10 @@ export class ProduitDetailComponent implements OnInit {
     return this.product?.images || [];
   }
 
+  get isLoggedIn(): boolean {
+    return this.api.isLoggedIn();
+  }
+
   selectImage(url: string): void {
     this.activeImage = url;
   }
@@ -60,15 +72,36 @@ export class ProduitDetailComponent implements OnInit {
     (event.target as HTMLImageElement).src = this.fallbackImage;
   }
 
-  get quoteParams(): Record<string, string> {
+  changeQty(delta: number): void {
+    this.quantity = Math.min(9999, Math.max(1, this.quantity + delta));
+  }
+
+  addToCart(): void {
     if (!this.product) {
-      return {};
+      return;
     }
-    return {
-      productId: String(this.product.id),
-      product: this.product.name,
-      reference: this.product.reference || '',
-      image: this.product.imageUrl || ''
-    };
+    this.feedback = '';
+    this.feedbackError = false;
+
+    if (!this.isLoggedIn) {
+      this.router.navigate(['/login'], {
+        queryParams: { returnUrl: `/produit/${this.product.id}` }
+      });
+      return;
+    }
+
+    this.adding = true;
+    this.cart.addItem(this.product.id, this.quantity).subscribe({
+      next: () => {
+        this.adding = false;
+        this.feedback = 'Produit ajouté au panier.';
+        this.feedbackError = false;
+      },
+      error: (err) => {
+        this.adding = false;
+        this.feedbackError = true;
+        this.feedback = err?.error?.message || 'Impossible d’ajouter au panier.';
+      }
+    });
   }
 }
